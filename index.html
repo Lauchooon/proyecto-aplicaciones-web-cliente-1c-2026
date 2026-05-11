@@ -12,13 +12,19 @@
         <h1>TechStore</h1>
         <nav>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="/contact.html">Contacto</a></li>
-                
-                <li><a href="C:\Users\lauti\Documents\GitHub\proyecto-aplicaciones-web-cliente-1c-2026\new-product.html">Alta Producto</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
             </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
         </nav>
     </header>
 
@@ -26,90 +32,178 @@
         <img src="/img/banner-techstore.jpg" alt="Banner de Tecnología" width="20%">
         <section id="inicio">
             <h2>Bienvenido a TechStore</h2>
-            <p>Tu tienda de confianza para componentes de informática. Contamos con amplia variedad de hardware para tu PC.</p>
+        </section>
+
+        <section id="destacados">
+            <h2>Productos en Oferta</h2>
+            <div class="productos">
+                <article class="tarjeta-producto oferta">
+                    <span class="etiqueta-oferta">OFERTA</span>
+                    <div class="producto-imagen"><img src="img/gpu-05.jpg" alt="RTX 4070"></div>
+                    <div class="producto-info">
+                        <h4>Placa de Video RTX 4070</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio-anterior">$450.000</span>
+                            <span class="producto-precio">$379.990</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>GPU NVIDIA con 12GB GDDR6X, ideal para gaming en 1440p</p>
+                    </div>
+                </article>
+                <article class="tarjeta-producto oferta">
+                    <span class="etiqueta-oferta">OFERTA</span>
+                    <div class="producto-imagen"><img src="img/mon-04.jpg" alt="Monitor 27 144Hz"></div>
+                    <div class="producto-info">
+                        <h4>Monitor 27" 144Hz</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio-anterior">$185.000</span>
+                            <span class="producto-precio">$149.990</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>Pantalla IPS Full HD con tecnología FreeSync</p>
+                    </div>
+                </article>
+                <article class="tarjeta-producto oferta">
+                    <span class="etiqueta-oferta">OFERTA</span>
+                    <div class="producto-imagen"><img src="img/proc-05.jpg" alt="Ryzen 9 5900X"></div>
+                    <div class="producto-info">
+                        <h4>Procesador Ryzen 9 5900X</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio-anterior">$320.000</span>
+                            <span class="producto-precio">$259.990</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>12 nucleos 24 hilos, perfecto para edición y gaming</p>
+                    </div>
+                </article>
+            </div>
         </section>
 
         <section id="productos">
             <h2>Nuestros Productos</h2>
             <div class="productos">
-                <article>
-                    <h3>Procesadores</h3>
-                    <p>CPUs de última generación Intel y AMD para todas las necesidades.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Coolers</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>Sistemas de refrigeración por aire y líquida para tu equipo</p>
+                    </div>
                 </article>
-                <article>
-                    <h3>Memorias RAM</h3>
-                    <p>Módulos de memoria DDR4 y DDR5 de alta velocidad.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Discos SSD</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>Unidades de estado sólido NVMe y SATA para máximo rendimiento</p>
+                    </div>
                 </article>
-                <article>
-                    <h3>Discos SSD</h3>
-                    <p>Unidades de estado sólido NVMe y SATA para máximo rendimiento.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Fuentes</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>Fuentes de alimentación certificadas de alta eficiencia</p>
+                    </div>
                 </article>
-                <article>
-                    <h3>Placas de Video</h3>
-                    <p>GPUs NVIDIA y AMD para gaming y trabajo profesional.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Gabinetes</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>Torres con excelente flujo de aire y diseño</p>
+                    </div>
                 </article>
-                <article>
-                    <h3>Motherboards</h3>
-                    <p>Placas madre con los últimos chipsets y conectividad.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Memorias RAM</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>Módulos de memoria DDR4 y DDR5 de alta velocidad</p>
+                    </div>
                 </article>
-                <article>
-                    <h3>Coolers</h3>
-                    <p>Sistemas de refrigeración por aire y líquida para tu equipo.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Monitores</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>Pantallas Full HD, 4K y ultra-wide para gaming y trabajo</p>
+                    </div>
                 </article>
-                <article>
-                    <h3>Gabinetes</h3>
-                    <p>Torres con excelente flujo de aire y diseño.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Motherboards</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>Placas madre con los últimos chipsets y conectividad</p>
+                    </div>
                 </article>
-                <article>
-                    <h3>Fuentes</h3>
-                    <p>Fuentes de alimentación certificadas de alta eficiencia.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Placas de Video</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>GPUs NVIDIA y AMD para gaming y trabajo profesional</p>
+                    </div>
                 </article>
-                <article>
-                    <h3>Monitores</h3>
-                    <p>Pantallas Full HD, 4K y ultra-wide para gaming y trabajo.</p>
+                <article class="tarjeta-producto">
+                    <div class="producto-imagen"></div>
+                    <div class="producto-info">
+                        <h4>Procesadores</h4>
+                        <div class="producto-precio-container">
+                            <span class="producto-precio">Ver precios</span>
+                        </div>
+                    </div>
+                    <div class="producto-descripcion">
+                        <p>CPUs de última generación Intel y AMD para todas las necesidades</p>
+                    </div>
                 </article>
             </div>
         </section>
 
-        <section id="busqueda">
-            <h2>Buscar Productos</h2>
-            <form action="#" method="get">
-                <label for="marca">Marca:</label>
-                <input type="text" id="marca" name="marca" placeholder="Ej: NVIDIA, AMD, Intel">
-                
-                <label for="modelo">Modelo:</label>
-                <input type="text" id="modelo" name="modelo" placeholder="Ej: RTX 4090, Ryzen 7">
-                
-                <label for="categoria">Categoría:</label>
-                <select id="categoria" name="categoria">
-                    <option value="">Seleccionar categoría</option>
-                    <option value="procesadores">Procesadores</option>
-                    <option value="ram">Memorias RAM</option>
-                    <option value="ssd">Discos SSD</option>
-                    <option value="gpu">Placas de Video</option>
-                    <option value="motherboard">Motherboards</option>
-                    <option value="coolers">Coolers</option>
-                    <option value="gabinetes">Gabinetes</option>
-                    <option value="fuentes">Fuentes</option>
-                    <option value="monitores">Monitores</option>
-                </select>
-                
-                <button type="submit">Buscar</button>
-            </form>
-        </section>
-
-        <section id="nosotros">
-            <h2>Sobre Nosotros</h2>
-            <p>Somos una empresa dedicada a la venta de componentes de informática con más de 10 años de experiencia en el mercado. Nuestra misión es proporcionar hardware de calidad a los mejores precios.</p>
+        <section id="contacto">
             <address>
-                <p>Dirección: Av. Principal 123, Ciudad</p>
-                <p>Teléfono: (555) 123-4567</p>
-                <p>Email: contacto@techstore.com</p>
-                <p>Horario: Lunes a Viernes de 8:00 a 18:00 hrs</p>
+                <p>Dirección: Avenida 51 N°485 entre 4 y 5</p>
+                <p>Teléfono: 221-422-6165</p>
+                <p>Email: contacto@techstorelp.com</p>
+                <p>Horario: Lunes a Sábados de 9:00 a 21:00 hs</p>
             </address>
         </section>
-
-        
     </main>
 
     <footer>
