@@ -3,16 +3,25 @@ let catalogProducts = [];
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    const productsGrid = document.querySelector(".products-grid");
+    if (!productsGrid) return;
 
-    fetch("https://fakestoreapi.com/products?sort=desc")
+    fetch(`${SUPABASE_URL}/rest/v1/Products`, {
+        headers: {
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        }
+    })
         .then(response => response.json())
         .then(data => { 
             allProducts = data.map(item => ({
-                name: item.title,
-                price: `$${item.price.toFixed(2)}`,
+                id: item.id,
+                name: item.name,
+                price: `$${parseFloat(item.price).toFixed(2)}`,
                 image: item.image,
-                quotes: `${item.rating.count} cuotas sin interés de $${(item.price / item.rating.count).toFixed(2)}`,
-                location: item.category
+                quotes: item.quotes,
+                location: item.location,
+                description: item.description
             }));
             catalogProducts = allProducts;
             loadProducts(catalogProducts);
@@ -65,6 +74,10 @@ function newProductCard(product) {
 
     productCard.appendChild(imageContainer);
     productCard.appendChild(productInfo);
+
+    productCard.addEventListener("click", function () {
+        window.location.href = `/product-detail.html?id=${product.id}`;
+    });
     
     return productCard;
 }
@@ -84,22 +97,81 @@ function clearProducts() {
     }
 }
 
-document.getElementById("input-search").addEventListener("input", function() {
-    catalogProducts = [];
-    clearProducts(); // Clear current products from the grid
-    const query = this.value.toLowerCase();
-    
-    allProducts.forEach(product => {
-        const name = product.name.toLowerCase();
-        const location = product.location.toLowerCase();
+const inputSearchProducts = document.getElementById("input-search");
+if (inputSearchProducts) {
+    inputSearchProducts.addEventListener("input", function() {
+        catalogProducts = [];
+        clearProducts(); // Clear current products from the grid
+        const query = this.value.toLowerCase();
         
-        if (name.includes(query) || location.includes(query)) {
-            catalogProducts.push(product);
-        } else {
-            // Do nothing, product is not displayed
-        }
+        allProducts.forEach(product => {
+            const name = product.name.toLowerCase();
+            const location = product.location.toLowerCase();
+            
+            if (name.includes(query) || location.includes(query)) {
+                catalogProducts.push(product);
+            } else {
+                // Do nothing, product is not displayed
+            }
+        });
+
+        loadProducts(catalogProducts);
+    });
+}
+
+
+async function insertProduct(product) {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/Products`, {
+        method: "POST",
+        headers: {
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(product)
     });
 
-    loadProducts(catalogProducts);
-});
+    if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+
+    return response;
+}
+
+const productForm = document.getElementById("product-form");
+if (productForm) {
+    productForm.addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const submitBtn = this.querySelector(".form-submit");
+        const messageEl = document.getElementById("form-message");
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Guardando...";
+        messageEl.style.display = "none";
+        messageEl.className = "form-message";
+
+        const product = {
+            name: document.getElementById("nombre").value.trim(),
+            price: parseFloat(document.getElementById("precio").value),
+            image: document.getElementById("imageurl").value.trim(),
+            location: document.getElementById("location").value.trim(),
+            quotes: Number(document.getElementById("quotes").value.trim())
+        };
+
+        try {
+            await insertProduct(product);
+            messageEl.className = "form-message success";
+            messageEl.textContent = "Producto guardado correctamente.";
+            this.reset();
+        } catch (error) {
+            messageEl.className = "form-message error";
+            messageEl.textContent = `Error al guardar: ${error.message}`;
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Guardar Producto";
+        }
+    });
+}
 
