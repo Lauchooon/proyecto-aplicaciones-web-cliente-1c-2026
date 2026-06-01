@@ -1,36 +1,23 @@
-document.addEventListener("DOMContentLoaded", (event) => {
-    const products = [
-        {
-            name: "Batería Moura 12x65",
-            price: "$10.00",
-            image: "https://http2.mlstatic.com/D_NQ_NP_637894-MLA81758252428_122024-O.webp",
-            quotes: "3 cuotas sin interés de $3.33",
-            location: "Disponible en tienda"
-        },
-        {
-            name: "Batería Moura 12x120",
-            price: "$20.00",
-            image: "https://http2.mlstatic.com/D_NQ_NP_637894-MLA81758252428_122024-O.webp",
-            quotes: "6 cuotas sin interés de $3.33",
-            location: "Disponible en tienda"
-        },
-        {
-            name: "Batería Moura 12x200",
-            price: "$30.00",
-            image: "https://http2.mlstatic.com/D_NQ_NP_637894-MLA81758252428_122024-O.webp",
-            quotes: "12 cuotas sin interés de $2.50",
-            location: "Disponible en tienda"
-        },
-            {
-            name: "Semi eje trasero derecho",
-            price: "$105.00",
-            image: "https://http2.mlstatic.com/D_NQ_NP_637894-MLA81758252428_122024-O.webp",
-            quotes: "6 cuotas sin interés de $18",
-            location: "Capital Federal"
-        }
-    ];
+let allProducts = [];
+let catalogProducts = [];
 
-    loadProducts(products);
+
+document.addEventListener("DOMContentLoaded", (event) => {
+
+    fetch("https://fakestoreapi.com/products?sort=desc")
+        .then(response => response.json())
+        .then(data => { 
+            allProducts = data.map(item => ({
+                name: item.title,
+                price: `$${item.price.toFixed(2)}`,
+                image: item.image,
+                quotes: `${item.rating.count} cuotas sin interés de $${(item.price / item.rating.count).toFixed(2)}`,
+                location: item.category
+            }));
+            catalogProducts = allProducts;
+            loadProducts(catalogProducts);
+        })
+        .catch(error => console.error("Error fetching products:", error));
 
 });
 
@@ -90,5 +77,29 @@ function loadProducts(products) {
     });
 }
 
+function clearProducts() {
+    const productsGrid = document.querySelector(".products-grid");
+    while (productsGrid.firstChild) {
+        productsGrid.removeChild(productsGrid.firstChild);
+    }
+}
 
+document.getElementById("input-search").addEventListener("input", function() {
+    catalogProducts = [];
+    clearProducts(); // Clear current products from the grid
+    const query = this.value.toLowerCase();
+    
+    allProducts.forEach(product => {
+        const name = product.name.toLowerCase();
+        const location = product.location.toLowerCase();
+        
+        if (name.includes(query) || location.includes(query)) {
+            catalogProducts.push(product);
+        } else {
+            // Do nothing, product is not displayed
+        }
+    });
+
+    loadProducts(catalogProducts);
+});
 
