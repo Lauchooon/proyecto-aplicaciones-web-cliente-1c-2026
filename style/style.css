@@ -590,3 +590,228 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.product-quotes {
+    font-size: 0.8125rem;
+    color: var(--ml-green);
+}
+
+.product-detail-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 0.25rem;
+}
+
+.product-detail-image {
+    flex: 1;
+    min-width: 0;
+}
+
+.product-detail-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.25rem;
+}
+
+.product-detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.detail-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.detail-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.detail-cuotas {
+    font-size: 1rem;
+    color: var(--ml-green);
+}
+
+.detail-location {
+    font-size: 0.875rem;
+    color: var(--ml-gray);
+}
+
+.detail-divider {
+    height: 1px;
+    background: #eee;
+    margin: 0.5rem 0;
+}
+
+.detail-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+.detail-description {
+    font-size: 0.9375rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.detail-buy-btn {
+    padding: 0.875rem 1.5rem;
+    background: var(--ml-blue);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 1rem;
+    align-self: flex-start;
+}
+
+.detail-buy-btn:hover {
+    background: #2d72d3;
+}
+
+.detail-back-link {
+    display: inline-block;
+    margin: 0 1rem 2rem;
+    font-size: 0.875rem;
+    color: var(--ml-blue);
+    text-decoration: none;
+}
+
+.detail-back-link:hover {
+    text-decoration: underline;
+}
+
+#product-detail-main {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .product-detail-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .detail-title {
+        font-size: 1.25rem;
+    }
+
+    .detail-price {
+        font-size: 1.5rem;
+    }
+}
+
+.admin-main {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+#new-product {
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    padding: 0.625rem 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    font-size: 0.9375rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--ml-blue);
+    box-shadow: 0 0 0 2px rgba(52, 134, 250, 0.15);
+}
+
+.form-submit {
+    padding: 0.75rem 1rem;
+    background: var(--ml-blue);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+
+.form-submit:hover {
+    background: #2d72d3;
+}
+
+.form-submit:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    display: none;
+}
+
+.form-message.success {
+    display: block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.form-message.error {
+    display: block;
+    background: #fce4ec;
+    color: #c62828;
+    border: 1px solid #f8bbd0;
+}

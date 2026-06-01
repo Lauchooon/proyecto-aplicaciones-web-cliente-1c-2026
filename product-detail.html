@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRepuestos - Tu tienda de repuestos para automóviles</title>
+    <title>Detalle del Producto - AutoRepuestos</title>
     <link rel="stylesheet" href="/style/style.css">
-    <meta name="description" content="Encuentra los mejores repuestos para tu vehículo. Amplio catálogo de piezas automotor.">
+    <meta name="description" content="Detalle del producto en AutoRepuestos.">
     <script src="/js/config.js" defer></script>
-    <script src="/js/script.js" defer></script>
+    <script src="/js/product-detail.js" defer></script>
 </head>
 <body>
     <header class="ml-header">
@@ -22,7 +22,7 @@
             
             <div class="ml-search">
                 <form action="/search" method="get" class="ml-search-form">
-                    <input type="text" id="input-search" placeholder="Buscar productos, marcas, categorías..." class="ml-search-input">
+                    <input type="text" name="q" placeholder="Buscar productos, marcas, categorías..." class="ml-search-input">
                     <button type="submit" class="ml-search-btn">
                         <span>🔍</span>
                     </button>
@@ -32,7 +32,7 @@
             <div class="ml-header-actions">
                 <nav class="ml-nav">
                     <ul class="ml-nav-list">
-                        <li><a href="#productos" class="ml-nav-link">Ofertas</a></li>
+                        <li><a href="/" class="ml-nav-link">Ofertas</a></li>
                         <li><a href="/about.html" class="ml-nav-link">Nosotros</a></li>
                         <li><a href="/contact.html" class="ml-nav-link">Contacto</a></li>
                         <li><a href="/new-product.html" class="ml-nav-link">Admin</a></li>
@@ -122,55 +122,23 @@
         <button type="button" class="filter-apply-btn">Aplicar filtros</button>
     </aside>
 
-    <main>
-        <img src="/img/filtrodeaceite.jpg" alt="Banner de Repuestos de Calidad" width="20%">
-
-        <section id="productos">
-            <h2>Nuestros Productos</h2>
-            
-            <div class="products-grid">
-            <!--
-                <article class="product-card">
-                    <div class="product-image-container">
-                        <span class="badge-envio">Envío gratis</span>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_637894-MLA81758252428_122024-O.webp" alt="Filtro de Aceite" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Filtro de Aceite Original Toyota</h3>
-                        <p class="product-price">$12.999</p>
-                        <p class="product-cuotas">12x $1.083 sin interés</p>
-                        <p class="product-location">Capital Federal</p>
-                    </div>
-                </article>
-            -->
-                
+    <main id="product-detail-main">
+        <div id="product-detail" class="product-detail-container">
+            <div class="product-detail-image">
+                <img id="detail-image" src="" alt="Imagen del producto">
             </div>
-
-            <article>
-                <h3 id="motor">Repuestos de Motor</h3>
-                <p>Filtros, bujías, correas, rodamientos y más para el corazón de tu vehículo.</p>
-            </article>
-            <article>
-                <h3 id="frenos">Repuestos de Frenos</h3>
-                <p>Pastillas, discos, tambores, líquido de frenos y accesorios de seguridad.</p>
-            </article>
-            <article>
-                <h3 id="suspension">Suspensión y Dirección</h3>
-                <p>Amortiguadores, rotulas, barillas, bujes y componentes de suspensión.</p>
-            </article>
-            <article>
-                <h3 id="electrico">Eléctricos y Electrónicos</h3>
-                <p>Baterías, alternadores, sensores, luces y sistemas de iluminación.</p>
-            </article>
-            <article>
-                <h3 id="carroceria">Carrocería</h3>
-                <p>Parachoques, espejos, faros, luces y accesorios exteriores.</p>
-            </article>
-            <article>
-                <h3>Accesorios</h3>
-                <p>Limpiadores, lubricantes, herramientas y productos de mantenimiento.</p>
-            </article>
-        </section>
+            <div class="product-detail-info">
+                <h1 id="detail-title" class="detail-title"></h1>
+                <p id="detail-price" class="detail-price"></p>
+                <p id="detail-quotes" class="detail-cuotas"></p>
+                <p id="detail-location" class="detail-location"></p>
+                <div class="detail-divider"></div>
+                <h3 class="detail-section-title">Descripción</h3>
+                <p id="detail-description" class="detail-description"></p>
+                <button id="detail-buy-btn" class="detail-buy-btn">Comprar ahora</button>
+            </div>
+        </div>
+        <a href="/" class="detail-back-link">← Volver a la tienda</a>
     </main>
 
     <footer>
