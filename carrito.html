@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Carrito de Compras</title>
+    <meta name="description" content="Carrito de compras de TechStore">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>TechStore</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="/contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Carrito de Compras</h2>
+
+        <section id="carrito-productos">
+            <h3>Productos en tu carrito</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio Unitario</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Procesador AMD Ryzen 7 5800X</td>
+                        <td>$180.000</td>
+                        <td>$180.000</td>
+                    </tr>
+                    <tr>
+                        <td>Memoria RAM Corsair Vengeance 16GB DDR4</td>
+                        <td>$45.000</td>
+                        <td>$45.000</td>
+                    </tr>
+                    <tr>
+                        <td>Disco SSD NVMe Samsung 1TB 980 Pro</td>
+                        <td>$75.000</td>
+                        <td>$75.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="resumen-compra">
+            <h3>Resumen de Compra</h3>
+
+            <fieldset>
+                <legend>Opciones de Envío</legend>
+                <div class="opciones-envio">
+                    <label>
+                        <input type="radio" name="envio" value="estandar" checked>
+                        Envío estándar (5-7 días hábiles) - $3.000
+                    </label>
+                    <label>
+                        <input type="radio" name="envio" value="expres">
+                        Envío exprés (2-3 días hábiles) - $5.500
+                    </label>
+                    <label>
+                        <input type="radio" name="envio" value="retiro">
+                        Retiro en tienda - Sin costo
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Método de Pago</legend>
+                <div class="opciones-pago">
+                    <label>
+                        <input type="radio" name="pago" value="tarjeta" checked>
+                        Tarjeta de crédito/débito
+                    </label>
+                    <label>
+                        <input type="radio" name="pago" value="transferencia">
+                        Transferencia bancaria
+                    </label>
+                    <label>
+                        <input type="radio" name="pago" value="efectivo">
+                        Efectivo (contra entrega)
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="totales">
+                <p>Subtotal: <strong>$300.000</strong></p>
+                <p>Envío: <strong>$3.000</strong></p>
+                <p>Total: <strong>$303.000</strong></p>
+            </div>
+
+            <button type="submit">Finalizar Compra</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
