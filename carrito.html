@@ -6,6 +6,9 @@
     <title>TechStore - Carrito de Compras</title>
     <meta name="description" content="Carrito de compras de TechStore">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/carrito.css">
 </head>
 <body>
     <header>
@@ -15,8 +18,9 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
-                <li><a href="/contact.html">Contacto</a></li>
+                <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
                 <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
@@ -32,83 +36,72 @@
     <main>
         <h2>Carrito de Compras</h2>
 
+        <div class="pasos-checkout">
+            <span class="paso activo">Carrito</span>
+            <span class="paso-separador"></span>
+            <a href="checkout.html" class="paso">Pago y Envío</a>
+            <span class="paso-separador"></span>
+            <span class="paso">Confirmación</span>
+        </div>
+
         <section id="carrito-productos">
             <h3>Productos en tu carrito</h3>
-            <table>
+            <table class="tabla-carrito">
                 <thead>
                     <tr>
                         <th>Producto</th>
-                        <th>Precio Unitario</th>
-                        <th>Subtotal</th>
+                        <th class="col-precio">Precio Unitario</th>
+                        <th class="col-cantidad">Cantidad</th>
+                        <th class="col-subtotal">Subtotal</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Procesador AMD Ryzen 7 5800X</td>
-                        <td>$180.000</td>
-                        <td>$180.000</td>
+                        <td>
+                            Procesador AMD Ryzen 7 5800X
+                            <br><button class="btn-eliminar">Eliminar</button>
+                        </td>
+                        <td class="col-precio">$180.000</td>
+                        <td class="col-cantidad"><input type="number" class="cantidad-input" value="1" min="1"></td>
+                        <td class="col-subtotal">$180.000</td>
                     </tr>
                     <tr>
-                        <td>Memoria RAM Corsair Vengeance 16GB DDR4</td>
-                        <td>$45.000</td>
-                        <td>$45.000</td>
+                        <td>
+                            Memoria RAM Corsair Vengeance 16GB DDR4
+                            <br><button class="btn-eliminar">Eliminar</button>
+                        </td>
+                        <td class="col-precio">$45.000</td>
+                        <td class="col-cantidad"><input type="number" class="cantidad-input" value="2" min="1"></td>
+                        <td class="col-subtotal">$90.000</td>
                     </tr>
                     <tr>
-                        <td>Disco SSD NVMe Samsung 1TB 980 Pro</td>
-                        <td>$75.000</td>
-                        <td>$75.000</td>
+                        <td>
+                            Disco SSD NVMe Samsung 1TB 980 Pro
+                            <br><button class="btn-eliminar">Eliminar</button>
+                        </td>
+                        <td class="col-precio">$75.000</td>
+                        <td class="col-cantidad"><input type="number" class="cantidad-input" value="1" min="1"></td>
+                        <td class="col-subtotal">$75.000</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <section id="resumen-compra">
-            <h3>Resumen de Compra</h3>
-
-            <fieldset>
-                <legend>Opciones de Envío</legend>
-                <div class="opciones-envio">
-                    <label>
-                        <input type="radio" name="envio" value="estandar" checked>
-                        Envío estándar (5-7 días hábiles) - $3.000
-                    </label>
-                    <label>
-                        <input type="radio" name="envio" value="expres">
-                        Envío exprés (2-3 días hábiles) - $5.500
-                    </label>
-                    <label>
-                        <input type="radio" name="envio" value="retiro">
-                        Retiro en tienda - Sin costo
-                    </label>
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <legend>Método de Pago</legend>
-                <div class="opciones-pago">
-                    <label>
-                        <input type="radio" name="pago" value="tarjeta" checked>
-                        Tarjeta de crédito/débito
-                    </label>
-                    <label>
-                        <input type="radio" name="pago" value="transferencia">
-                        Transferencia bancaria
-                    </label>
-                    <label>
-                        <input type="radio" name="pago" value="efectivo">
-                        Efectivo (contra entrega)
-                    </label>
-                </div>
-            </fieldset>
-
-            <div class="totales">
-                <p>Subtotal: <strong>$300.000</strong></p>
-                <p>Envío: <strong>$3.000</strong></p>
-                <p>Total: <strong>$303.000</strong></p>
+        <div class="resumen-carrito">
+            <div class="fila-total">
+                <span>Subtotal</span>
+                <strong>$345.000</strong>
             </div>
-
-            <button type="submit">Finalizar Compra</button>
-        </section>
+            <div class="fila-total">
+                <span>Envío</span>
+                <strong>$3.000</strong>
+            </div>
+            <div class="fila-total total-final">
+                <span>Total</span>
+                <strong>$348.000</strong>
+            </div>
+            <a href="checkout.html" class="btn-checkout">Continuar con el pago</a>
+        </div>
     </main>
 
     <footer>

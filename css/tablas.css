@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    border: var(--borde-fino) solid var(--color-texto);
+    text-align: left;
+}
+
+table th {
+    background-color: var(--color-fondo);
+    font-weight: bold;
+}

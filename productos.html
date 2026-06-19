@@ -6,6 +6,8 @@
     <title>TechStore - Productos</title>
     <meta name="description" content="Catálogo completo de productos de informática y gaming">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/tarjetas.css">
 </head>
 <body>
     <header>
@@ -17,6 +19,7 @@
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
                 <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
@@ -50,339 +53,449 @@
             <a href="#filtro-monitores">Monitores</a>
         </nav>
 
-        <section id="procesadores">
-            <h3>Procesadores</h3>
-            <div class="productos">
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 9 7950X"></div>
-                    <div class="producto-info">
-                        <h4>AMD Ryzen 9 7950X</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$650.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>16 núcleos, 32 hilos, 5.7GHz - Socket AM5</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/intel.jpg" alt="Intel Core i9-14900K"></div>
-                    <div class="producto-info">
-                        <h4>Intel Core i9-14900K</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$680.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>24 núcleos, 32 hilos, 6.0GHz - Socket LGA1700</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 7 5800X3D"></div>
-                    <div class="producto-info">
-                        <h4>AMD Ryzen 7 5800X3D</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$320.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>8 núcleos, 16 hilos, 4.7GHz - Socket AM4</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/intel.jpg" alt="Intel Core i5-13600K"></div>
-                    <div class="producto-info">
-                        <h4>Intel Core i5-13600K</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$285.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>14 núcleos, 20 hilos, 5.1GHz - Socket LGA1700</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto oferta">
-                    <span class="etiqueta-oferta">OFERTA</span>
-                    <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 9 5900X"></div>
-                    <div class="producto-info">
-                        <h4>AMD Ryzen 9 5900X</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio-anterior">$320.000</span>
-                            <span class="producto-precio">$259.990</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>12 núcleos 24 hilos - Socket AM4</p>
-                    </div>
-                </a>
+        <div class="filtros-secundarios">
+            <div class="filtro-precio-rango">
+                <label>Precio: $<span id="rango-label-min">0</span> — $<span id="rango-label-max">1.450.000</span></label>
+                <div class="rango-slider">
+                    <div class="rango-track" id="rango-track"></div>
+                    <input type="range" id="rango-min" min="0" max="1450000" value="0" step="1000">
+                    <input type="range" id="rango-max" min="0" max="1450000" value="1450000" step="1000">
+                </div>
             </div>
-        </section>
+            <div class="filtro-orden">
+                <label for="sort-select">Ordenar:</label>
+                <select id="sort-select">
+                    <option value="default">Por defecto</option>
+                    <option value="nombre-asc">Alfabéticamente A-Z</option>
+                    <option value="nombre-desc">Alfabéticamente Z-A</option>
+                    <option value="precio-asc">Precio: menor a mayor</option>
+                    <option value="precio-desc">Precio: mayor a menor</option>
+                    <option value="fecha-desc">Más nuevos</option>
+                    <option value="ventas-desc">Más vendidos</option>
+                </select>
+            </div>
+        </div>
 
-        <section id="memorias-ram">
-            <h3>Memorias RAM</h3>
-            <div class="productos">
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ram.jpg" alt="Corsair Vengeance 32GB DDR5"></div>
-                    <div class="producto-info">
-                        <h4>Corsair Vengeance 32GB DDR5</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$145.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>5600MHz, kit 2x16GB, CL36</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ram.jpg" alt="G.Skill Trident Z5 16GB DDR5"></div>
-                    <div class="producto-info">
-                        <h4>G.Skill Trident Z5 16GB DDR5</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$95.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>6400MHz, RGB, kit 2x8GB, CL32</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ram.jpg" alt="Kingston Fury Beast 32GB DDR4"></div>
-                    <div class="producto-info">
-                        <h4>Kingston Fury Beast 32GB DDR4</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$78.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>3200MHz, kit 2x16GB, CL16</p>
-                    </div>
-                </a>
-            </div>
-        </section>
+        <h3 id="titulo-procesadores" class="titulo-categoria">Procesadores</h3>
+        <h3 id="titulo-memorias" class="titulo-categoria">Memorias RAM</h3>
+        <h3 id="titulo-discos" class="titulo-categoria">Discos SSD</h3>
+        <h3 id="titulo-placas-video" class="titulo-categoria">Placas de Video</h3>
+        <h3 id="titulo-motherboards" class="titulo-categoria">Motherboards</h3>
+        <h3 id="titulo-monitores" class="titulo-categoria">Monitores</h3>
 
-        <section id="discos-ssd">
-            <h3>Discos SSD</h3>
-            <div class="productos">
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ssd-01.jpg" alt="Samsung 990 Pro 2TB NVMe"></div>
-                    <div class="producto-info">
-                        <h4>Samsung 990 Pro 2TB NVMe</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$195.000</span>
-                        </div>
+        <div class="productos">
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="procesadores">
+                <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 9 7950X"></div>
+                <div class="producto-info">
+                    <h4>AMD Ryzen 9 7950X</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$650.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>PCIe 4.0, lectura 7450MB/s, escritura 6900MB/s</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>16 núcleos, 32 hilos, 5.7GHz - Socket AM5</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="procesadores">
+                <div class="producto-imagen"><img src="img/intel.jpg" alt="Intel Core i9-14900K"></div>
+                <div class="producto-info">
+                    <h4>Intel Core i9-14900K</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$680.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ssd-02.jpg" alt="WD Black SN850X 1TB NVMe"></div>
-                    <div class="producto-info">
-                        <h4>WD Black SN850X 1TB NVMe</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$105.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>24 núcleos, 32 hilos, 6.0GHz - Socket LGA1700</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="procesadores">
+                <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 7 5800X3D"></div>
+                <div class="producto-info">
+                    <h4>AMD Ryzen 7 5800X3D</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$320.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>PCIe 4.0, lectura 7300MB/s, escritura 6300MB/s</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>8 núcleos, 16 hilos, 4.7GHz - Socket AM4</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="procesadores">
+                <div class="producto-imagen"><img src="img/intel.jpg" alt="Intel Core i5-13600K"></div>
+                <div class="producto-info">
+                    <h4>Intel Core i5-13600K</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$285.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ssd-03.jpg" alt="Crucial P3 Plus 1TB NVMe"></div>
-                    <div class="producto-info">
-                        <h4>Crucial P3 Plus 1TB NVMe</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$65.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>14 núcleos, 20 hilos, 5.1GHz - Socket LGA1700</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto oferta" data-categoria="procesadores">
+                <span class="etiqueta-oferta">OFERTA</span>
+                <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 9 5900X"></div>
+                <div class="producto-info">
+                    <h4>AMD Ryzen 9 5900X</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio-anterior">$320.000</span>
+                        <span class="producto-precio">$259.990</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>PCIe 4.0, lectura 5000MB/s, escritura 4200MB/s</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>12 núcleos 24 hilos - Socket AM4</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="memorias">
+                <div class="producto-imagen"><img src="img/ram.jpg" alt="Corsair Vengeance 32GB DDR5"></div>
+                <div class="producto-info">
+                    <h4>Corsair Vengeance 32GB DDR5</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$145.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ssd-04.jpg" alt="Kingston A400 480GB SATA"></div>
-                    <div class="producto-info">
-                        <h4>Kingston A400 480GB SATA</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$28.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>5600MHz, kit 2x16GB, CL36</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="memorias">
+                <div class="producto-imagen"><img src="img/ram.jpg" alt="G.Skill Trident Z5 16GB DDR5"></div>
+                <div class="producto-info">
+                    <h4>G.Skill Trident Z5 16GB DDR5</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$95.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>SATA 3, lectura 500MB/s, formato 2.5"</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>6400MHz, RGB, kit 2x8GB, CL32</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="memorias">
+                <div class="producto-imagen"><img src="img/ram.jpg" alt="Kingston Fury Beast 32GB DDR4"></div>
+                <div class="producto-info">
+                    <h4>Kingston Fury Beast 32GB DDR4</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$78.000</span>
                     </div>
-                </a>
-            </div>
-        </section>
-
-        <section id="placas-de-video">
-            <h3>Placas de Video</h3>
-            <div class="productos">
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/gpu-01.jpg" alt="NVIDIA RTX 4090"></div>
-                    <div class="producto-info">
-                        <h4>NVIDIA RTX 4090</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$1.450.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>3200MHz, kit 2x16GB, CL16</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="discos">
+                <div class="producto-imagen"><img src="img/ssd-01.jpg" alt="Samsung 990 Pro 2TB NVMe"></div>
+                <div class="producto-info">
+                    <h4>Samsung 990 Pro 2TB NVMe</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$195.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>24GB GDDR6X, 16384 CUDA cores, Ada Lovelace</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>PCIe 4.0, lectura 7450MB/s, escritura 6900MB/s</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="discos">
+                <div class="producto-imagen"><img src="img/ssd-02.jpg" alt="WD Black SN850X 1TB NVMe"></div>
+                <div class="producto-info">
+                    <h4>WD Black SN850X 1TB NVMe</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$105.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/gpu-02.jpg" alt="NVIDIA RTX 4070 Ti Super"></div>
-                    <div class="producto-info">
-                        <h4>NVIDIA RTX 4070 Ti Super</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$580.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>PCIe 4.0, lectura 7300MB/s, escritura 6300MB/s</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="discos">
+                <div class="producto-imagen"><img src="img/ssd-03.jpg" alt="Crucial P3 Plus 1TB NVMe"></div>
+                <div class="producto-info">
+                    <h4>Crucial P3 Plus 1TB NVMe</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$65.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>16GB GDDR6X, 8448 CUDA cores</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>PCIe 4.0, lectura 5000MB/s, escritura 4200MB/s</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="discos">
+                <div class="producto-imagen"><img src="img/ssd-04.jpg" alt="Kingston A400 480GB SATA"></div>
+                <div class="producto-info">
+                    <h4>Kingston A400 480GB SATA</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$28.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/gpu-03.jpg" alt="AMD Radeon RX 7900 XTX"></div>
-                    <div class="producto-info">
-                        <h4>AMD Radeon RX 7900 XTX</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$620.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>SATA 3, lectura 500MB/s, formato 2.5"</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="placas-video">
+                <div class="producto-imagen"><img src="img/gpu-01.jpg" alt="NVIDIA RTX 4090"></div>
+                <div class="producto-info">
+                    <h4>NVIDIA RTX 4090</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$1.450.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>24GB GDDR6, 6144 Stream Processors, RDNA 3</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>24GB GDDR6X, 16384 CUDA cores, Ada Lovelace</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="placas-video">
+                <div class="producto-imagen"><img src="img/gpu-02.jpg" alt="NVIDIA RTX 4070 Ti Super"></div>
+                <div class="producto-info">
+                    <h4>NVIDIA RTX 4070 Ti Super</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$580.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/gpu-04.jpg" alt="NVIDIA RTX 3060 Ti"></div>
-                    <div class="producto-info">
-                        <h4>NVIDIA RTX 3060 Ti</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$295.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>16GB GDDR6X, 8448 CUDA cores</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="placas-video">
+                <div class="producto-imagen"><img src="img/gpu-03.jpg" alt="AMD Radeon RX 7900 XTX"></div>
+                <div class="producto-info">
+                    <h4>AMD Radeon RX 7900 XTX</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$620.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>8GB GDDR6, 4864 CUDA cores, Ampere</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>24GB GDDR6, 6144 Stream Processors, RDNA 3</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="placas-video">
+                <div class="producto-imagen"><img src="img/gpu-04.jpg" alt="NVIDIA RTX 3060 Ti"></div>
+                <div class="producto-info">
+                    <h4>NVIDIA RTX 3060 Ti</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$295.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto oferta">
-                    <span class="etiqueta-oferta">OFERTA</span>
-                    <div class="producto-imagen"><img src="img/gpu-05.jpg" alt="NVIDIA RTX 4070"></div>
-                    <div class="producto-info">
-                        <h4>NVIDIA RTX 4070</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio-anterior">$450.000</span>
-                            <span class="producto-precio">$379.990</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>8GB GDDR6, 4864 CUDA cores, Ampere</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto oferta" data-categoria="placas-video">
+                <span class="etiqueta-oferta">OFERTA</span>
+                <div class="producto-imagen"><img src="img/gpu-05.jpg" alt="NVIDIA RTX 4070"></div>
+                <div class="producto-info">
+                    <h4>NVIDIA RTX 4070</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio-anterior">$450.000</span>
+                        <span class="producto-precio">$379.990</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>12GB GDDR6X, ideal para gaming 1440p</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>12GB GDDR6X, ideal para gaming 1440p</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="motherboards">
+                <div class="producto-imagen"><img src="img/mb-01.jpg" alt="ASUS ROG Crosshair X670E Hero"></div>
+                <div class="producto-info">
+                    <h4>ASUS ROG Crosshair X670E Hero</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$485.000</span>
                     </div>
-                </a>
-            </div>
-        </section>
-
-        <section id="motherboards">
-            <h3>Motherboards</h3>
-            <div class="productos">
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/mb-01.jpg" alt="ASUS ROG Crosshair X670E Hero"></div>
-                    <div class="producto-info">
-                        <h4>ASUS ROG Crosshair X670E Hero</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$485.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>Socket AM5, DDR5, PCIe 5.0, WiFi 6E</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="motherboards">
+                <div class="producto-imagen"><img src="img/mb-02.jpg" alt="MSI MEG Z790 ACE"></div>
+                <div class="producto-info">
+                    <h4>MSI MEG Z790 ACE</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$420.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>Socket AM5, DDR5, PCIe 5.0, WiFi 6E</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>Socket LGA1700, DDR5, PCIe 5.0, WiFi 6E</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="motherboards">
+                <div class="producto-imagen"><img src="img/mb-03.jpg" alt="Gigabyte B650 AORUS Elite AX"></div>
+                <div class="producto-info">
+                    <h4>Gigabyte B650 AORUS Elite AX</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$185.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/mb-02.jpg" alt="MSI MEG Z790 ACE"></div>
-                    <div class="producto-info">
-                        <h4>MSI MEG Z790 ACE</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$420.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>Socket AM5, DDR5, PCIe 4.0, WiFi 6</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="monitores">
+                <div class="producto-imagen"><img src="img/monitor-01.jpg" alt="LG UltraGear 27"></div>
+                <div class="producto-info">
+                    <h4>LG UltraGear 27" 4K 144Hz</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$420.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>Socket LGA1700, DDR5, PCIe 5.0, WiFi 6E</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>IPS, HDMI 2.1, FreeSync Premium Pro, HDR400</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="monitores">
+                <div class="producto-imagen"><img src="img/monitor-02.jpg" alt="Samsung Odyssey G7"></div>
+                <div class="producto-info">
+                    <h4>Samsung Odyssey G7 32"</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$485.000</span>
                     </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/mb-03.jpg" alt="Gigabyte B650 AORUS Elite AX"></div>
-                    <div class="producto-info">
-                        <h4>Gigabyte B650 AORUS Elite AX</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$185.000</span>
-                        </div>
+                </div>
+                <div class="producto-descripcion">
+                    <p>VA, 240Hz, 1000R Curvo, G-Sync Compatible</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto" data-categoria="monitores">
+                <div class="producto-imagen"><img src="img/monitor-03.jpg" alt="ASUS ROG Swift"></div>
+                <div class="producto-info">
+                    <h4>ASUS ROG Swift 360Hz</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio">$650.000</span>
                     </div>
-                    <div class="producto-descripcion">
-                        <p>Socket AM5, DDR5, PCIe 4.0, WiFi 6</p>
+                </div>
+                <div class="producto-descripcion">
+                    <p>IPS, 360Hz, HDR, G-Sync Ultimate</p>
+                </div>
+            </a>
+            <a href="producto-detalle.html" class="tarjeta-producto oferta" data-categoria="monitores">
+                <span class="etiqueta-oferta">OFERTA</span>
+                <div class="producto-imagen"><img src="img/monitor-04.jpg" alt="Monitor 27 144Hz"></div>
+                <div class="producto-info">
+                    <h4>Monitor 27" 144Hz</h4>
+                    <div class="producto-precio-container">
+                        <span class="producto-precio-anterior">$185.000</span>
+                        <span class="producto-precio">$149.990</span>
                     </div>
-                </a>
-            </div>
-        </section>
-
-        <section id="monitores">
-            <h3>Monitores</h3>
-            <div class="productos">
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/monitor-01.jpg" alt="LG UltraGear 27"></div>
-                    <div class="producto-info">
-                        <h4>LG UltraGear 27" 4K 144Hz</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$420.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>IPS, HDMI 2.1, FreeSync Premium Pro, HDR400</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/monitor-02.jpg" alt="Samsung Odyssey G7"></div>
-                    <div class="producto-info">
-                        <h4>Samsung Odyssey G7 32"</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$485.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>VA, 240Hz, 1000R Curvo, G-Sync Compatible</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/monitor-03.jpg" alt="ASUS ROG Swift"></div>
-                    <div class="producto-info">
-                        <h4>ASUS ROG Swift 360Hz</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">$650.000</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>IPS, 360Hz, HDR, G-Sync Ultimate</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto oferta">
-                    <span class="etiqueta-oferta">OFERTA</span>
-                    <div class="producto-imagen"><img src="img/monitor-04.jpg" alt="Monitor 27 144Hz"></div>
-                    <div class="producto-info">
-                        <h4>Monitor 27" 144Hz</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio-anterior">$185.000</span>
-                            <span class="producto-precio">$149.990</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>IPS Full HD, FreeSync, tiempo de respuesta 1ms</p>
-                    </div>
-                </a>
-            </div>
-        </section>
+                </div>
+                <div class="producto-descripcion">
+                    <p>IPS Full HD, FreeSync, tiempo de respuesta 1ms</p>
+                </div>
+            </a>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function precioANumero(texto) {
+            return parseInt(texto.replace('$', '').replace(/\./g, ''));
+        }
+
+        function formatearPrecio(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        /* ---- Inicialización ---- */
+        var precioMin = Infinity, precioMax = -Infinity;
+        document.querySelectorAll('.tarjeta-producto').forEach(function(card) {
+            var p = precioANumero(card.querySelector('.producto-precio').textContent);
+            card.dataset.precio = p;
+            card.dataset.nombre = card.querySelector('h4').textContent.trim();
+            if (p < precioMin) precioMin = p;
+            if (p > precioMax) precioMax = p;
+        });
+
+        /* Datos mock para "Más nuevos" y "Más vendidos" */
+        var fechasMock = [
+            '2026-06-01','2026-05-15','2026-04-01','2026-03-10',
+            '2026-02-28','2026-01-15','2025-12-05','2025-09-10',
+            '2025-06-20','2025-03-15','2025-01-10','2024-11-20'
+        ];
+        document.querySelectorAll('.tarjeta-producto').forEach(function(card, i) {
+            card.dataset.fecha = fechasMock[i % fechasMock.length];
+            card.dataset.ventas = Math.floor(Math.abs(Math.sin(i + 1) * 500) + 10);
+        });
+
+        /* ---- Range Slider ---- */
+        var rangoMin = document.getElementById('rango-min');
+        var rangoMax = document.getElementById('rango-max');
+        var labelMin = document.getElementById('rango-label-min');
+        var labelMax = document.getElementById('rango-label-max');
+        var track = document.getElementById('rango-track');
+
+        rangoMin.min = rangoMax.min = precioMin;
+        rangoMin.max = rangoMax.max = precioMax;
+        rangoMin.value = precioMin;
+        rangoMax.value = precioMax;
+        labelMin.textContent = formatearPrecio(precioMin);
+        labelMax.textContent = formatearPrecio(precioMax);
+
+        function actualizarRango() {
+            var min = parseInt(rangoMin.value);
+            var max = parseInt(rangoMax.value);
+
+            if (min > max) {
+                var tmp = min; min = max; max = tmp;
+            }
+
+            rangoMin.value = min;
+            rangoMax.value = max;
+
+            labelMin.textContent = formatearPrecio(min);
+            labelMax.textContent = formatearPrecio(max);
+
+            var pMin = (min - precioMin) / (precioMax - precioMin) * 100;
+            var pMax = (max - precioMin) / (precioMax - precioMin) * 100;
+            track.style.left = pMin + '%';
+            track.style.right = (100 - pMax) + '%';
+
+            /* Filtrar en tiempo real */
+            document.querySelectorAll('.tarjeta-producto').forEach(function(card) {
+                var p = parseInt(card.dataset.precio);
+                card.classList.toggle('hidden-by-price', p < min || p > max);
+            });
+        }
+
+        rangoMin.addEventListener('input', actualizarRango);
+        rangoMax.addEventListener('input', actualizarRango);
+        actualizarRango();
+
+        /* ---- Ordenar ---- */
+        var ordenOriginal = [];
+        document.querySelectorAll('.productos').forEach(function(grid) {
+            ordenOriginal.push({
+                grid: grid,
+                cards: Array.from(grid.querySelectorAll('.tarjeta-producto'))
+            });
+        });
+
+        document.getElementById('sort-select').addEventListener('change', function() {
+            var criterio = this.value;
+
+            if (criterio === 'default') {
+                ordenOriginal.forEach(function(item) {
+                    item.cards.forEach(function(c) { item.grid.appendChild(c); });
+                });
+                return;
+            }
+
+            document.querySelectorAll('.productos').forEach(function(grid) {
+                var cards = Array.from(grid.querySelectorAll('.tarjeta-producto'));
+
+                cards.sort(function(a, b) {
+                    switch (criterio) {
+                        case 'nombre-asc': return a.dataset.nombre.localeCompare(b.dataset.nombre);
+                        case 'nombre-desc': return b.dataset.nombre.localeCompare(a.dataset.nombre);
+                        case 'precio-asc': return parseInt(a.dataset.precio) - parseInt(b.dataset.precio);
+                        case 'precio-desc': return parseInt(b.dataset.precio) - parseInt(a.dataset.precio);
+                        case 'fecha-desc': return b.dataset.fecha.localeCompare(a.dataset.fecha);
+                        case 'ventas-desc': return parseInt(b.dataset.ventas) - parseInt(a.dataset.ventas);
+                        default: return 0;
+                    }
+                });
+
+                cards.forEach(function(c) { grid.appendChild(c); });
+            });
+        });
+    </script>
 </body>
 </html>

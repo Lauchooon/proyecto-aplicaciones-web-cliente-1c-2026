@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Pedido Confirmado</title>
+    <meta name="description" content="Tu pedido ha sido confirmado - TechStore">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">TechStore</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Pedido Confirmado</h2>
+
+        <div class="pasos-checkout">
+            <a href="carrito.html" class="paso">Carrito</a>
+            <span class="paso-separador"></span>
+            <a href="checkout.html" class="paso">Pago y Envío</a>
+            <span class="paso-separador"></span>
+            <span class="paso activo">Confirmación</span>
+        </div>
+
+        <div class="confirmacion">
+            <div class="confirmacion-icono">&#10003;</div>
+            <h3>¡Gracias por tu compra!</h3>
+            <p class="confirmacion-numero">Pedido <strong>#TS-2026-004217</strong></p>
+            <p>Te enviaremos un correo electrónico con los detalles de tu pedido y el número de seguimiento una vez que el paquete sea despachado.</p>
+        </div>
+
+        <div class="confirmacion-detalle">
+            <div class="confirmacion-columna">
+                <h4>Dirección de envío</h4>
+                <p>Lautaro Gómez<br>
+                Av. Corrientes 1234<br>
+                CABA, Buenos Aires<br>
+                CP 1043<br>
+                Tel: 11 5555-1234</p>
+
+                <h4>Método de envío</h4>
+                <p>Envío estándar (5-7 días hábiles) - $3.000</p>
+
+                <h4>Método de pago</h4>
+                <p>Tarjeta de crédito/débito terminada en 3456</p>
+            </div>
+
+            <div class="confirmacion-columna">
+                <h4>Productos</h4>
+                <table class="tabla-carrito">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th class="col-cantidad">Cant.</th>
+                            <th class="col-subtotal">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AMD Ryzen 7 5800X</td>
+                            <td class="col-cantidad">1</td>
+                            <td class="col-subtotal">$180.000</td>
+                        </tr>
+                        <tr>
+                            <td>Corsair Vengeance 16GB DDR4</td>
+                            <td class="col-cantidad">2</td>
+                            <td class="col-subtotal">$90.000</td>
+                        </tr>
+                        <tr>
+                            <td>Samsung 1TB 980 Pro</td>
+                            <td class="col-cantidad">1</td>
+                            <td class="col-subtotal">$75.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="resumen-totales confirmacion-totales">
+                    <div class="fila-total">
+                        <span>Subtotal</span>
+                        <strong>$345.000</strong>
+                    </div>
+                    <div class="fila-total">
+                        <span>Envío</span>
+                        <strong>$3.000</strong>
+                    </div>
+                    <div class="fila-total total-final">
+                        <span>Total</span>
+                        <strong>$348.000</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirmacion-acciones">
+            <a href="productos.html" class="btn-checkout">Seguir comprando</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
