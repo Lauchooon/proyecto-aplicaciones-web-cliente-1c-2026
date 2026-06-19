@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Detalle del Producto</title>
+    <meta name="description" content="Información detallada del producto">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">TechStore</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="producto-detalle">
+            <div class="producto-detalle-imagen">
+                <img src="img/gpu-05.jpg" alt="Nombre del Producto">
+            </div>
+            <div class="producto-detalle-info">
+                <h2>Nombre del Producto</h2>
+                <p class="producto-detalle-precio">
+                    $99.990
+                    <span class="producto-detalle-precio-anterior">$149.990</span>
+                </p>
+                <p class="producto-detalle-descripcion">
+                    Descripción detallada del producto. Aquí se incluyen las especificaciones técnicas, características principales y toda la información relevante para que el cliente pueda tomar una decisión de compra informada.
+                </p>
+                <p class="producto-detalle-sku">SKU: ABC-123-XXX</p>
+                <div class="producto-detalle-envio">
+                    <h4>Opciones de Envío</h4>
+                    <ul>
+                        <li>Envío estándar (5-7 días hábiles) - $2.500</li>
+                        <li>Envío express (1-2 días hábiles) - $7.000</li>
+                        <li>Retiro en tienda sin costo</li>
+                    </ul>
+                </div>
+                <button class="btn-carrito">Agregar al carrito</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

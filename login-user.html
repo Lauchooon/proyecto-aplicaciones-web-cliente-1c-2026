@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Iniciar Sesión</title>
+    <meta name="description" content="Inicia sesión en tu cuenta TechStore">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">TechStore</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pagina-login">
+        <form>
+            <fieldset>
+                <legend>Iniciar Sesión</legend>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+                <button type="submit">Ingresar</button>
+            </fieldset>
+        </form>
+        <a href="#" class="olvide-link">¿Olvidaste tu contraseña?</a>
+        <a href="login-admin.html" class="admin-link">Acceder como administrador</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>TechStore</h1>
+        <h1><a href="index.html">TechStore</a></h1>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -17,6 +17,7 @@
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
                 <input type="checkbox" id="buscador-toggle">
@@ -31,11 +32,29 @@
     <main>
         <h2>Catálogo de Productos</h2>
 
+        <span id="filtro-todos" class="filtro-ancla"></span>
+        <span id="filtro-procesadores" class="filtro-ancla"></span>
+        <span id="filtro-memorias" class="filtro-ancla"></span>
+        <span id="filtro-discos" class="filtro-ancla"></span>
+        <span id="filtro-placas" class="filtro-ancla"></span>
+        <span id="filtro-motherboards" class="filtro-ancla"></span>
+        <span id="filtro-monitores" class="filtro-ancla"></span>
+
+        <nav class="filtros-categoria">
+            <a href="#filtro-todos">Todos</a>
+            <a href="#filtro-procesadores">Procesadores</a>
+            <a href="#filtro-memorias">Memorias RAM</a>
+            <a href="#filtro-discos">Discos SSD</a>
+            <a href="#filtro-placas">Placas de Video</a>
+            <a href="#filtro-motherboards">Motherboards</a>
+            <a href="#filtro-monitores">Monitores</a>
+        </nav>
+
         <section id="procesadores">
             <h3>Procesadores</h3>
             <div class="productos">
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/proc-01.jpg" alt="AMD Ryzen 9 7950X"></div>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 9 7950X"></div>
                     <div class="producto-info">
                         <h4>AMD Ryzen 9 7950X</h4>
                         <div class="producto-precio-container">
@@ -45,9 +64,9 @@
                     <div class="producto-descripcion">
                         <p>16 núcleos, 32 hilos, 5.7GHz - Socket AM5</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/proc-02.jpg" alt="Intel Core i9-14900K"></div>
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/intel.jpg" alt="Intel Core i9-14900K"></div>
                     <div class="producto-info">
                         <h4>Intel Core i9-14900K</h4>
                         <div class="producto-precio-container">
@@ -57,9 +76,9 @@
                     <div class="producto-descripcion">
                         <p>24 núcleos, 32 hilos, 6.0GHz - Socket LGA1700</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/proc-03.jpg" alt="AMD Ryzen 7 5800X3D"></div>
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 7 5800X3D"></div>
                     <div class="producto-info">
                         <h4>AMD Ryzen 7 5800X3D</h4>
                         <div class="producto-precio-container">
@@ -69,9 +88,9 @@
                     <div class="producto-descripcion">
                         <p>8 núcleos, 16 hilos, 4.7GHz - Socket AM4</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/proc-04.jpg" alt="Intel Core i5-13600K"></div>
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/intel.jpg" alt="Intel Core i5-13600K"></div>
                     <div class="producto-info">
                         <h4>Intel Core i5-13600K</h4>
                         <div class="producto-precio-container">
@@ -81,10 +100,10 @@
                     <div class="producto-descripcion">
                         <p>14 núcleos, 20 hilos, 5.1GHz - Socket LGA1700</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto oferta">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto oferta">
                     <span class="etiqueta-oferta">OFERTA</span>
-                    <div class="producto-imagen"><img src="img/proc-05.jpg" alt="AMD Ryzen 9 5900X"></div>
+                    <div class="producto-imagen"><img src="img/amd.jpg" alt="AMD Ryzen 9 5900X"></div>
                     <div class="producto-info">
                         <h4>AMD Ryzen 9 5900X</h4>
                         <div class="producto-precio-container">
@@ -95,15 +114,15 @@
                     <div class="producto-descripcion">
                         <p>12 núcleos 24 hilos - Socket AM4</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
 
         <section id="memorias-ram">
             <h3>Memorias RAM</h3>
             <div class="productos">
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ram-01.jpg" alt="Corsair Vengeance 32GB DDR5"></div>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/ram.jpg" alt="Corsair Vengeance 32GB DDR5"></div>
                     <div class="producto-info">
                         <h4>Corsair Vengeance 32GB DDR5</h4>
                         <div class="producto-precio-container">
@@ -113,9 +132,9 @@
                     <div class="producto-descripcion">
                         <p>5600MHz, kit 2x16GB, CL36</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ram-02.jpg" alt="G.Skill Trident Z5 16GB DDR5"></div>
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/ram.jpg" alt="G.Skill Trident Z5 16GB DDR5"></div>
                     <div class="producto-info">
                         <h4>G.Skill Trident Z5 16GB DDR5</h4>
                         <div class="producto-precio-container">
@@ -125,9 +144,9 @@
                     <div class="producto-descripcion">
                         <p>6400MHz, RGB, kit 2x8GB, CL32</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/ram-03.jpg" alt="Kingston Fury Beast 32GB DDR4"></div>
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/ram.jpg" alt="Kingston Fury Beast 32GB DDR4"></div>
                     <div class="producto-info">
                         <h4>Kingston Fury Beast 32GB DDR4</h4>
                         <div class="producto-precio-container">
@@ -137,14 +156,14 @@
                     <div class="producto-descripcion">
                         <p>3200MHz, kit 2x16GB, CL16</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
 
         <section id="discos-ssd">
             <h3>Discos SSD</h3>
             <div class="productos">
-                <article class="tarjeta-producto">
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/ssd-01.jpg" alt="Samsung 990 Pro 2TB NVMe"></div>
                     <div class="producto-info">
                         <h4>Samsung 990 Pro 2TB NVMe</h4>
@@ -155,8 +174,8 @@
                     <div class="producto-descripcion">
                         <p>PCIe 4.0, lectura 7450MB/s, escritura 6900MB/s</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/ssd-02.jpg" alt="WD Black SN850X 1TB NVMe"></div>
                     <div class="producto-info">
                         <h4>WD Black SN850X 1TB NVMe</h4>
@@ -167,8 +186,8 @@
                     <div class="producto-descripcion">
                         <p>PCIe 4.0, lectura 7300MB/s, escritura 6300MB/s</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/ssd-03.jpg" alt="Crucial P3 Plus 1TB NVMe"></div>
                     <div class="producto-info">
                         <h4>Crucial P3 Plus 1TB NVMe</h4>
@@ -179,8 +198,8 @@
                     <div class="producto-descripcion">
                         <p>PCIe 4.0, lectura 5000MB/s, escritura 4200MB/s</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/ssd-04.jpg" alt="Kingston A400 480GB SATA"></div>
                     <div class="producto-info">
                         <h4>Kingston A400 480GB SATA</h4>
@@ -191,14 +210,14 @@
                     <div class="producto-descripcion">
                         <p>SATA 3, lectura 500MB/s, formato 2.5"</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
 
         <section id="placas-de-video">
             <h3>Placas de Video</h3>
             <div class="productos">
-                <article class="tarjeta-producto">
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/gpu-01.jpg" alt="NVIDIA RTX 4090"></div>
                     <div class="producto-info">
                         <h4>NVIDIA RTX 4090</h4>
@@ -209,8 +228,8 @@
                     <div class="producto-descripcion">
                         <p>24GB GDDR6X, 16384 CUDA cores, Ada Lovelace</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/gpu-02.jpg" alt="NVIDIA RTX 4070 Ti Super"></div>
                     <div class="producto-info">
                         <h4>NVIDIA RTX 4070 Ti Super</h4>
@@ -221,8 +240,8 @@
                     <div class="producto-descripcion">
                         <p>16GB GDDR6X, 8448 CUDA cores</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/gpu-03.jpg" alt="AMD Radeon RX 7900 XTX"></div>
                     <div class="producto-info">
                         <h4>AMD Radeon RX 7900 XTX</h4>
@@ -233,8 +252,8 @@
                     <div class="producto-descripcion">
                         <p>24GB GDDR6, 6144 Stream Processors, RDNA 3</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/gpu-04.jpg" alt="NVIDIA RTX 3060 Ti"></div>
                     <div class="producto-info">
                         <h4>NVIDIA RTX 3060 Ti</h4>
@@ -245,8 +264,8 @@
                     <div class="producto-descripcion">
                         <p>8GB GDDR6, 4864 CUDA cores, Ampere</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto oferta">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto oferta">
                     <span class="etiqueta-oferta">OFERTA</span>
                     <div class="producto-imagen"><img src="img/gpu-05.jpg" alt="NVIDIA RTX 4070"></div>
                     <div class="producto-info">
@@ -259,14 +278,14 @@
                     <div class="producto-descripcion">
                         <p>12GB GDDR6X, ideal para gaming 1440p</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
 
         <section id="motherboards">
             <h3>Motherboards</h3>
             <div class="productos">
-                <article class="tarjeta-producto">
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/mb-01.jpg" alt="ASUS ROG Crosshair X670E Hero"></div>
                     <div class="producto-info">
                         <h4>ASUS ROG Crosshair X670E Hero</h4>
@@ -277,8 +296,8 @@
                     <div class="producto-descripcion">
                         <p>Socket AM5, DDR5, PCIe 5.0, WiFi 6E</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/mb-02.jpg" alt="MSI MEG Z790 ACE"></div>
                     <div class="producto-info">
                         <h4>MSI MEG Z790 ACE</h4>
@@ -289,8 +308,8 @@
                     <div class="producto-descripcion">
                         <p>Socket LGA1700, DDR5, PCIe 5.0, WiFi 6E</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
                     <div class="producto-imagen"><img src="img/mb-03.jpg" alt="Gigabyte B650 AORUS Elite AX"></div>
                     <div class="producto-info">
                         <h4>Gigabyte B650 AORUS Elite AX</h4>
@@ -301,15 +320,15 @@
                     <div class="producto-descripcion">
                         <p>Socket AM5, DDR5, PCIe 4.0, WiFi 6</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
 
         <section id="monitores">
             <h3>Monitores</h3>
             <div class="productos">
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/mon-01.jpg" alt="LG UltraGear 27"></div>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/monitor-01.jpg" alt="LG UltraGear 27"></div>
                     <div class="producto-info">
                         <h4>LG UltraGear 27" 4K 144Hz</h4>
                         <div class="producto-precio-container">
@@ -319,9 +338,9 @@
                     <div class="producto-descripcion">
                         <p>IPS, HDMI 2.1, FreeSync Premium Pro, HDR400</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/mon-02.jpg" alt="Samsung Odyssey G7"></div>
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/monitor-02.jpg" alt="Samsung Odyssey G7"></div>
                     <div class="producto-info">
                         <h4>Samsung Odyssey G7 32"</h4>
                         <div class="producto-precio-container">
@@ -331,9 +350,9 @@
                     <div class="producto-descripcion">
                         <p>VA, 240Hz, 1000R Curvo, G-Sync Compatible</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"><img src="img/mon-03.jpg" alt="ASUS ROG Swift"></div>
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto">
+                    <div class="producto-imagen"><img src="img/monitor-03.jpg" alt="ASUS ROG Swift"></div>
                     <div class="producto-info">
                         <h4>ASUS ROG Swift 360Hz</h4>
                         <div class="producto-precio-container">
@@ -343,10 +362,10 @@
                     <div class="producto-descripcion">
                         <p>IPS, 360Hz, HDR, G-Sync Ultimate</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto oferta">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto oferta">
                     <span class="etiqueta-oferta">OFERTA</span>
-                    <div class="producto-imagen"><img src="img/mon-04.jpg" alt="Monitor 27 144Hz"></div>
+                    <div class="producto-imagen"><img src="img/monitor-04.jpg" alt="Monitor 27 144Hz"></div>
                     <div class="producto-info">
                         <h4>Monitor 27" 144Hz</h4>
                         <div class="producto-precio-container">
@@ -357,7 +376,7 @@
                     <div class="producto-descripcion">
                         <p>IPS Full HD, FreeSync, tiempo de respuesta 1ms</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
     </main>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>TechStore</h1>
+        <h1><a href="index.html">TechStore</a></h1>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -17,6 +17,7 @@
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
                 <input type="checkbox" id="buscador-toggle">
@@ -37,7 +38,7 @@
         <section id="destacados">
             <h2>Productos en Oferta</h2>
             <div class="productos">
-                <article class="tarjeta-producto oferta">
+                <a href="producto-detalle.html" class="tarjeta-producto oferta">
                     <span class="etiqueta-oferta">OFERTA</span>
                     <div class="producto-imagen"><img src="img/gpu-05.jpg" alt="RTX 4070"></div>
                     <div class="producto-info">
@@ -50,8 +51,8 @@
                     <div class="producto-descripcion">
                         <p>GPU NVIDIA con 12GB GDDR6X, ideal para gaming en 1440p</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto oferta">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto oferta">
                     <span class="etiqueta-oferta">OFERTA</span>
                     <div class="producto-imagen"><img src="img/mon-04.jpg" alt="Monitor 27 144Hz"></div>
                     <div class="producto-info">
@@ -64,8 +65,8 @@
                     <div class="producto-descripcion">
                         <p>Pantalla IPS Full HD con tecnología FreeSync</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto oferta">
+                </a>
+                <a href="producto-detalle.html" class="tarjeta-producto oferta">
                     <span class="etiqueta-oferta">OFERTA</span>
                     <div class="producto-imagen"><img src="img/proc-05.jpg" alt="Ryzen 9 5900X"></div>
                     <div class="producto-info">
@@ -78,15 +79,17 @@
                     <div class="producto-descripcion">
                         <p>12 nucleos 24 hilos, perfecto para edición y gaming</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
 
         <section id="productos">
             <h2>Nuestros Productos</h2>
             <div class="productos">
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                <a href="productos.html#filtro-todos" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-coolers.jpg" alt="Coolers">
+                    </div>
                     <div class="producto-info">
                         <h4>Coolers</h4>
                         <div class="producto-precio-container">
@@ -96,9 +99,11 @@
                     <div class="producto-descripcion">
                         <p>Sistemas de refrigeración por aire y líquida para tu equipo</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                </a>
+                <a href="productos.html#filtro-discos" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-ssd.jpg" alt="Discos SSD">
+                    </div>
                     <div class="producto-info">
                         <h4>Discos SSD</h4>
                         <div class="producto-precio-container">
@@ -108,9 +113,11 @@
                     <div class="producto-descripcion">
                         <p>Unidades de estado sólido NVMe y SATA para máximo rendimiento</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                </a>
+                <a href="productos.html#filtro-todos" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-fuentes.jpg" alt="Fuentes">
+                    </div>
                     <div class="producto-info">
                         <h4>Fuentes</h4>
                         <div class="producto-precio-container">
@@ -120,9 +127,11 @@
                     <div class="producto-descripcion">
                         <p>Fuentes de alimentación certificadas de alta eficiencia</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                </a>
+                <a href="productos.html#filtro-todos" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-gabinetes.jpg" alt="Gabinetes">
+                    </div>
                     <div class="producto-info">
                         <h4>Gabinetes</h4>
                         <div class="producto-precio-container">
@@ -132,9 +141,11 @@
                     <div class="producto-descripcion">
                         <p>Torres con excelente flujo de aire y diseño</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                </a>
+                <a href="productos.html#filtro-memorias" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-ram.jpg" alt="Memorias RAM">
+                    </div>
                     <div class="producto-info">
                         <h4>Memorias RAM</h4>
                         <div class="producto-precio-container">
@@ -144,9 +155,11 @@
                     <div class="producto-descripcion">
                         <p>Módulos de memoria DDR4 y DDR5 de alta velocidad</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                </a>
+                <a href="productos.html#filtro-monitores" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-monitores.jpg" alt="Monitores">
+                    </div>
                     <div class="producto-info">
                         <h4>Monitores</h4>
                         <div class="producto-precio-container">
@@ -156,9 +169,11 @@
                     <div class="producto-descripcion">
                         <p>Pantallas Full HD, 4K y ultra-wide para gaming y trabajo</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                </a>
+                <a href="productos.html#filtro-motherboards" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-motherboards.jpg" alt="Motherboards">
+                    </div>
                     <div class="producto-info">
                         <h4>Motherboards</h4>
                         <div class="producto-precio-container">
@@ -168,9 +183,11 @@
                     <div class="producto-descripcion">
                         <p>Placas madre con los últimos chipsets y conectividad</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                </a>
+                <a href="productos.html#filtro-placas" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-placas-video.jpg" alt="Placas de Video">
+                    </div>
                     <div class="producto-info">
                         <h4>Placas de Video</h4>
                         <div class="producto-precio-container">
@@ -180,9 +197,11 @@
                     <div class="producto-descripcion">
                         <p>GPUs NVIDIA y AMD para gaming y trabajo profesional</p>
                     </div>
-                </article>
-                <article class="tarjeta-producto">
-                    <div class="producto-imagen"></div>
+                </a>
+                <a href="productos.html#filtro-procesadores" class="tarjeta-producto">
+                    <div class="producto-imagen">
+                        <img src="img/categoria-procesadores.jpg" alt="Procesadores">
+                    </div>
                     <div class="producto-info">
                         <h4>Procesadores</h4>
                         <div class="producto-precio-container">
@@ -192,7 +211,7 @@
                     <div class="producto-descripcion">
                         <p>CPUs de última generación Intel y AMD para todas las necesidades</p>
                     </div>
-                </article>
+                </a>
             </div>
         </section>
 
