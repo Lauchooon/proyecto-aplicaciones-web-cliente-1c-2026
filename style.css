@@ -18,6 +18,9 @@ body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
     line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header y Navegación */
@@ -29,6 +32,11 @@ header {
 header h1 {
     color: var(--color-primario);
     font-size: 1.5rem;
+}
+
+header h1 a {
+    color: inherit;
+    text-decoration: none;
 }
 
 header nav ul {
@@ -95,6 +103,7 @@ header nav {
 /* Main */
 main {
     padding: 1rem;
+    flex: 1;
 }
 
 section {
@@ -225,7 +234,12 @@ table th {
 .productos {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
+}
+
+a.tarjeta-producto {
+    text-decoration: none;
+    color: inherit;
 }
 
 .tarjeta-producto {
@@ -332,6 +346,224 @@ table th {
     z-index: 1;
 }
 
+/* Filtros de categoría */
+.filtro-ancla {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.filtros-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filtros-categoria a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: var(--borde-fino) solid var(--color-texto);
+    text-decoration: none;
+    color: var(--color-texto);
+    font-size: 0.9rem;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filtros-categoria a:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+}
+
+/* Ancla activa: resalta el link correspondiente */
+#filtro-todos:target ~ .filtros-categoria a[href="#filtro-todos"],
+#filtro-procesadores:target ~ .filtros-categoria a[href="#filtro-procesadores"],
+#filtro-memorias:target ~ .filtros-categoria a[href="#filtro-memorias"],
+#filtro-discos:target ~ .filtros-categoria a[href="#filtro-discos"],
+#filtro-placas:target ~ .filtros-categoria a[href="#filtro-placas"],
+#filtro-motherboards:target ~ .filtros-categoria a[href="#filtro-motherboards"],
+#filtro-monitores:target ~ .filtros-categoria a[href="#filtro-monitores"] {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    border-color: var(--color-primario);
+}
+
+/* Cuando un filtro específico está activo, oculta todas las secciones */
+#filtro-procesadores:target ~ section,
+#filtro-memorias:target ~ section,
+#filtro-discos:target ~ section,
+#filtro-placas:target ~ section,
+#filtro-motherboards:target ~ section,
+#filtro-monitores:target ~ section {
+    display: none;
+}
+
+/* Muestra solo la sección que coincide */
+#filtro-procesadores:target ~ #procesadores,
+#filtro-memorias:target ~ #memorias-ram,
+#filtro-discos:target ~ #discos-ssd,
+#filtro-placas:target ~ #placas-de-video,
+#filtro-motherboards:target ~ #motherboards,
+#filtro-monitores:target ~ #monitores {
+    display: block;
+}
+
+/* Producto detalle */
+.producto-detalle {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.producto-detalle-imagen {
+    width: 100%;
+    max-height: 400px;
+    background-color: #e0e0e0;
+    overflow: hidden;
+}
+
+.producto-detalle-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.producto-detalle-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.producto-detalle-info h2 {
+    color: var(--color-texto);
+    margin-bottom: 0;
+}
+
+.producto-detalle-precio {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--color-primario);
+    margin-bottom: 0;
+}
+
+.producto-detalle-precio-anterior {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: var(--color-texto);
+    opacity: 0.7;
+    margin-left: 0.75rem;
+    font-weight: normal;
+}
+
+.producto-detalle-descripcion {
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.producto-detalle-sku {
+    font-size: 0.85rem;
+    color: var(--color-texto);
+    opacity: 0.6;
+    margin-bottom: 0;
+}
+
+.producto-detalle-envio {
+    padding: 1rem;
+    border: var(--borde-fino) solid var(--color-texto);
+}
+
+.producto-detalle-envio h4 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.producto-detalle-envio ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.producto-detalle-envio li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.producto-detalle-envio li::before {
+    content: "✔";
+    color: var(--color-primario);
+    font-weight: bold;
+}
+
+.producto-detalle .btn-carrito {
+    padding: 0.85rem 2rem;
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    align-self: flex-start;
+    transition: background-color 0.2s ease;
+}
+
+.producto-detalle .btn-carrito:hover {
+    background-color: var(--color-acento);
+}
+
+/* Login */
+.pagina-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagina-login form {
+    width: 100%;
+    max-width: 420px;
+    gap: 1.25rem;
+}
+
+.pagina-login fieldset {
+    padding: 2rem;
+}
+
+.pagina-login .olvide-link {
+    margin-top: 1rem;
+    color: var(--color-texto);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.pagina-login .olvide-link:hover {
+    color: var(--color-primario);
+    opacity: 1;
+}
+
+.pagina-login .admin-link {
+    margin-top: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: var(--color-texto);
+    border: var(--borde-fino) solid var(--color-texto);
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagina-login .admin-link:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    border-color: var(--color-primario);
+}
+
 /* Footer */
 footer {
     padding: 1rem;
@@ -341,6 +573,20 @@ footer {
 
 /* Tablet */
 @media (min-width: 768px) {
+    .producto-detalle {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .producto-detalle-imagen {
+        flex: 0 0 45%;
+        max-height: 500px;
+    }
+
+    .producto-detalle-info {
+        flex: 1;
+    }
+
     header {
         display: flex;
         justify-content: space-between;
@@ -382,14 +628,6 @@ footer {
     .productos {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .ofertas {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    #productos article {
-        margin-bottom: 0;
-    }
 }
 
 /* Desktop */
@@ -415,14 +653,6 @@ footer {
 
     .productos {
         grid-template-columns: repeat(3, 1fr);
-    }
-
-    .ofertas {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    #productos article {
-        margin-bottom: 0;
     }
 
     form {
