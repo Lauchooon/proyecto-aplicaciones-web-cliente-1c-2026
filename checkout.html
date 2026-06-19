@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Pago y Envío</title>
+    <meta name="description" content="Formulario de pago y envío de TechStore">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">TechStore</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Pago y Envío</h2>
+
+        <div class="pasos-checkout">
+            <a href="carrito.html" class="paso">Carrito</a>
+            <span class="paso-separador"></span>
+            <span class="paso activo">Pago y Envío</span>
+            <span class="paso-separador"></span>
+            <a href="orden-confirmada.html" class="paso">Confirmación</a>
+        </div>
+
+        <div class="checkout-layout">
+            <div class="checkout-formularios">
+                <form>
+                    <fieldset>
+                        <legend>Información de Envío</legend>
+
+                        <label for="nombre-completo">Nombre completo</label>
+                        <input type="text" id="nombre-completo" name="nombre" required>
+
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" required>
+
+                        <div class="campo-doble">
+                            <div>
+                                <label for="ciudad">Ciudad</label>
+                                <input type="text" id="ciudad" name="ciudad" required>
+                            </div>
+                            <div>
+                                <label for="provincia">Provincia</label>
+                                <select id="provincia" name="provincia" required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="bsas">Buenos Aires</option>
+                                    <option value="caba">CABA</option>
+                                    <option value="catamarca">Catamarca</option>
+                                    <option value="chaco">Chaco</option>
+                                    <option value="chubut">Chubut</option>
+                                    <option value="cordoba">Córdoba</option>
+                                    <option value="corrientes">Corrientes</option>
+                                    <option value="er">Entre Ríos</option>
+                                    <option value="formosa">Formosa</option>
+                                    <option value="jujuy">Jujuy</option>
+                                    <option value="lapampa">La Pampa</option>
+                                    <option value="larioja">La Rioja</option>
+                                    <option value="mendoza">Mendoza</option>
+                                    <option value="misiones">Misiones</option>
+                                    <option value="neuquen">Neuquén</option>
+                                    <option value="rn">Río Negro</option>
+                                    <option value="salta">Salta</option>
+                                    <option value="sj">San Juan</option>
+                                    <option value="sl">San Luis</option>
+                                    <option value="sc">Santa Cruz</option>
+                                    <option value="sfe">Santa Fe</option>
+                                    <option value="sdelestero">Santiago del Estero</option>
+                                    <option value="tf">Tierra del Fuego</option>
+                                    <option value="tucuman">Tucumán</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="campo-doble">
+                            <div>
+                                <label for="codigo-postal">Código Postal</label>
+                                <input type="text" id="codigo-postal" name="codigo-postal" required>
+                            </div>
+                            <div>
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Método de Envío</legend>
+                        <div class="opciones-envio">
+                            <label>
+                                <input type="radio" name="envio" value="estandar" checked>
+                                Envío estándar (5-7 días hábiles) - $3.000
+                            </label>
+                            <label>
+                                <input type="radio" name="envio" value="expres">
+                                Envío exprés (2-3 días hábiles) - $5.500
+                            </label>
+                            <label>
+                                <input type="radio" name="envio" value="retiro">
+                                Retiro en tienda - Sin costo
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Método de Pago</legend>
+                        <div class="opciones-pago">
+                            <label>
+                                <input type="radio" name="pago" value="tarjeta" checked>
+                                Tarjeta de crédito/débito
+                            </label>
+                            <label>
+                                <input type="radio" name="pago" value="transferencia">
+                                Transferencia bancaria
+                            </label>
+                            <label>
+                                <input type="radio" name="pago" value="efectivo">
+                                Efectivo (contra entrega)
+                            </label>
+                        </div>
+
+                        <div id="datos-tarjeta">
+                            <label for="num-tarjeta">Número de tarjeta</label>
+                            <input type="text" id="num-tarjeta" name="num-tarjeta" placeholder="1234 5678 9012 3456">
+
+                            <div class="campo-doble">
+                                <div>
+                                    <label for="fecha-venc">Fecha de vencimiento</label>
+                                    <input type="text" id="fecha-venc" name="fecha-venc" placeholder="MM/AA">
+                                </div>
+                                <div>
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="123">
+                                </div>
+                            </div>
+
+                            <label for="titular">Titular de la tarjeta</label>
+                            <input type="text" id="titular" name="titular">
+                        </div>
+                    </fieldset>
+
+                    <a href="orden-confirmada.html" class="btn-checkout">Confirmar Pedido</a>
+                </form>
+            </div>
+
+            <aside class="checkout-resumen">
+                <h3>Resumen del pedido</h3>
+
+                <div class="resumen-items">
+                    <div class="resumen-item">
+                        <span class="resumen-item-nombre">AMD Ryzen 7 5800X</span>
+                        <span class="resumen-item-cant">x1</span>
+                        <span class="resumen-item-precio">$180.000</span>
+                    </div>
+                    <div class="resumen-item">
+                        <span class="resumen-item-nombre">Corsair Vengeance 16GB DDR4</span>
+                        <span class="resumen-item-cant">x2</span>
+                        <span class="resumen-item-precio">$90.000</span>
+                    </div>
+                    <div class="resumen-item">
+                        <span class="resumen-item-nombre">Samsung 1TB 980 Pro</span>
+                        <span class="resumen-item-cant">x1</span>
+                        <span class="resumen-item-precio">$75.000</span>
+                    </div>
+                </div>
+
+                <div class="resumen-totales">
+                    <div class="fila-total">
+                        <span>Subtotal</span>
+                        <strong>$345.000</strong>
+                    </div>
+                    <div class="fila-total">
+                        <span>Envío</span>
+                        <strong>$3.000</strong>
+                    </div>
+                    <div class="fila-total total-final">
+                        <span>Total</span>
+                        <strong>$348.000</strong>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
