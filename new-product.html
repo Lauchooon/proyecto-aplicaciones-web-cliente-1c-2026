@@ -80,5 +80,27 @@
     <footer>
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var nombre = document.getElementById('nombre').value;
+            var precio = document.getElementById('precio').value;
+            var sku = document.getElementById('sku').value;
+            var categoria = document.getElementById('categoria').value;
+
+            var producto = {
+                nombre: nombre,
+                precio: precio,
+                sku: sku,
+                categoria: categoria
+            };
+
+            console.log(producto);
+
+            // TODO: aquí irá la llamada .insert() de Supabase
+        });
+    </script>
 </body>
 </html>

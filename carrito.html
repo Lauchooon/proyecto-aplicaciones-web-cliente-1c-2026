@@ -55,35 +55,7 @@
                         <th class="col-subtotal">Subtotal</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            Procesador AMD Ryzen 7 5800X
-                            <br><button class="btn-eliminar">Eliminar</button>
-                        </td>
-                        <td class="col-precio">$180.000</td>
-                        <td class="col-cantidad"><input type="number" class="cantidad-input" value="1" min="1"></td>
-                        <td class="col-subtotal">$180.000</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Memoria RAM Corsair Vengeance 16GB DDR4
-                            <br><button class="btn-eliminar">Eliminar</button>
-                        </td>
-                        <td class="col-precio">$45.000</td>
-                        <td class="col-cantidad"><input type="number" class="cantidad-input" value="2" min="1"></td>
-                        <td class="col-subtotal">$90.000</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Disco SSD NVMe Samsung 1TB 980 Pro
-                            <br><button class="btn-eliminar">Eliminar</button>
-                        </td>
-                        <td class="col-precio">$75.000</td>
-                        <td class="col-cantidad"><input type="number" class="cantidad-input" value="1" min="1"></td>
-                        <td class="col-subtotal">$75.000</td>
-                    </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
         </section>
 
@@ -107,5 +79,78 @@
     <footer>
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function formatearPrecio(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function obtenerCarrito() {
+            try {
+                var data = localStorage.getItem('carrito');
+                return data ? JSON.parse(data) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function renderizarCarrito() {
+            var carrito = obtenerCarrito();
+            var tbody = document.querySelector('.tabla-carrito tbody');
+            var subtotales = document.querySelectorAll('.resumen-carrito .fila-total strong');
+
+            tbody.innerHTML = '';
+
+            carrito.forEach(function(producto, index) {
+                var tr = document.createElement('tr');
+
+                var tdProducto = document.createElement('td');
+                tdProducto.appendChild(document.createTextNode(producto.nombre));
+                tdProducto.appendChild(document.createElement('br'));
+                var btnEliminar = document.createElement('button');
+                btnEliminar.className = 'btn-eliminar';
+                btnEliminar.textContent = 'Eliminar';
+                btnEliminar.addEventListener('click', function() {
+                    carrito.splice(index, 1);
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderizarCarrito();
+                });
+                tdProducto.appendChild(btnEliminar);
+                tr.appendChild(tdProducto);
+
+                var tdPrecio = document.createElement('td');
+                tdPrecio.className = 'col-precio';
+                tdPrecio.textContent = '$' + formatearPrecio(producto.precio);
+                tr.appendChild(tdPrecio);
+
+                var tdCantidad = document.createElement('td');
+                tdCantidad.className = 'col-cantidad';
+                var inputCant = document.createElement('input');
+                inputCant.type = 'number';
+                inputCant.className = 'cantidad-input';
+                inputCant.value = 1;
+                inputCant.min = 1;
+                tdCantidad.appendChild(inputCant);
+                tr.appendChild(tdCantidad);
+
+                var tdSubtotal = document.createElement('td');
+                tdSubtotal.className = 'col-subtotal';
+                tdSubtotal.textContent = '$' + formatearPrecio(producto.precio);
+                tr.appendChild(tdSubtotal);
+
+                tbody.appendChild(tr);
+            });
+
+            var subtotal = carrito.reduce(function(acc, p) { return acc + p.precio; }, 0);
+            var envio = 3000;
+            var total = subtotal + envio;
+
+            subtotales[0].textContent = '$' + formatearPrecio(subtotal);
+            subtotales[1].textContent = '$' + formatearPrecio(envio);
+            subtotales[2].textContent = '$' + formatearPrecio(total);
+        }
+
+        renderizarCarrito();
+    </script>
 </body>
 </html>

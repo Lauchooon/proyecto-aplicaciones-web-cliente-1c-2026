@@ -40,50 +40,7 @@
 
         <section id="destacados">
             <h2>Productos en Oferta</h2>
-            <div class="productos">
-                <a href="producto-detalle.html" class="tarjeta-producto oferta">
-                    <span class="etiqueta-oferta">OFERTA</span>
-                    <div class="producto-imagen"><img src="img/gpu-05.jpg" alt="RTX 4070"></div>
-                    <div class="producto-info">
-                        <h4>Placa de Video RTX 4070</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio-anterior">$450.000</span>
-                            <span class="producto-precio">$379.990</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>GPU NVIDIA con 12GB GDDR6X, ideal para gaming en 1440p</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto oferta">
-                    <span class="etiqueta-oferta">OFERTA</span>
-                    <div class="producto-imagen"><img src="img/mon-04.jpg" alt="Monitor 27 144Hz"></div>
-                    <div class="producto-info">
-                        <h4>Monitor 27" 144Hz</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio-anterior">$185.000</span>
-                            <span class="producto-precio">$149.990</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>Pantalla IPS Full HD con tecnología FreeSync</p>
-                    </div>
-                </a>
-                <a href="producto-detalle.html" class="tarjeta-producto oferta">
-                    <span class="etiqueta-oferta">OFERTA</span>
-                    <div class="producto-imagen"><img src="img/proc-05.jpg" alt="Ryzen 9 5900X"></div>
-                    <div class="producto-info">
-                        <h4>Procesador Ryzen 9 5900X</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio-anterior">$320.000</span>
-                            <span class="producto-precio">$259.990</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>12 nucleos 24 hilos, perfecto para edición y gaming</p>
-                    </div>
-                </a>
-            </div>
+            <div class="productos" id="ofertas-destacadas"></div>
         </section>
 
         <section id="productos">
@@ -231,5 +188,57 @@
     <footer>
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="js/productos.js"></script>
+    <script>
+        var ofertas = catalogoProductos.filter(function(p) { return p.oferta; });
+        var contenedor = document.getElementById('ofertas-destacadas');
+
+        ofertas.forEach(function(p) {
+            var enlace = document.createElement('a');
+            enlace.href = 'producto-detalle.html?id=' + p.id;
+            enlace.className = 'tarjeta-producto oferta';
+
+            var etiqueta = document.createElement('span');
+            etiqueta.className = 'etiqueta-oferta';
+            etiqueta.textContent = 'OFERTA';
+            enlace.appendChild(etiqueta);
+
+            var divImg = document.createElement('div');
+            divImg.className = 'producto-imagen';
+            var img = document.createElement('img');
+            img.src = p.imagen;
+            img.alt = p.nombre;
+            divImg.appendChild(img);
+            enlace.appendChild(divImg);
+
+            var divInfo = document.createElement('div');
+            divInfo.className = 'producto-info';
+            var h4 = document.createElement('h4');
+            h4.textContent = p.nombre;
+            divInfo.appendChild(h4);
+            var precioContainer = document.createElement('div');
+            precioContainer.className = 'producto-precio-container';
+            var spanAnt = document.createElement('span');
+            spanAnt.className = 'producto-precio-anterior';
+            spanAnt.textContent = '$' + formatearPrecio(p.precioAnterior);
+            precioContainer.appendChild(spanAnt);
+            var precioSpan = document.createElement('span');
+            precioSpan.className = 'producto-precio';
+            precioSpan.textContent = '$' + formatearPrecio(p.precio);
+            precioContainer.appendChild(precioSpan);
+            divInfo.appendChild(precioContainer);
+            enlace.appendChild(divInfo);
+
+            var divDesc = document.createElement('div');
+            divDesc.className = 'producto-descripcion';
+            var pDesc = document.createElement('p');
+            pDesc.textContent = p.descripcion;
+            divDesc.appendChild(pDesc);
+            enlace.appendChild(divDesc);
+
+            contenedor.appendChild(enlace);
+        });
+    </script>
 </body>
 </html>
