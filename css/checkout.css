@@ -80,8 +80,10 @@
     border-top: var(--borde-fino) solid var(--color-texto);
 }
 
-/* Card data section */
-#datos-tarjeta {
+/* Payment data sections */
+#datos-tarjeta,
+#datos-transferencia,
+#datos-efectivo {
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: var(--borde-fino) solid var(--color-texto);

@@ -11,15 +11,17 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.html">TechStore</a></h1>
-        <nav>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
                 <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
@@ -33,10 +35,7 @@
     </header>
 
     <main>
-        <img src="/img/banner-techstore.jpg" alt="Banner de Tecnología" width="20%">
-        <section id="inicio">
-            <h2>Bienvenido a TechStore</h2>
-        </section>
+        <div class="banner-wrapper"><img class="banner" src="img/banner-techstore.png" alt="Banner de Tecnología"></div>
 
         <section id="destacados">
             <h2>Productos en Oferta</h2>
@@ -45,134 +44,7 @@
 
         <section id="productos">
             <h2>Nuestros Productos</h2>
-            <div class="productos">
-                <a href="productos.html#filtro-todos" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-coolers.jpg" alt="Coolers">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Coolers</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>Sistemas de refrigeración por aire y líquida para tu equipo</p>
-                    </div>
-                </a>
-                <a href="productos.html#filtro-discos" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-ssd.jpg" alt="Discos SSD">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Discos SSD</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>Unidades de estado sólido NVMe y SATA para máximo rendimiento</p>
-                    </div>
-                </a>
-                <a href="productos.html#filtro-todos" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-fuentes.jpg" alt="Fuentes">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Fuentes</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>Fuentes de alimentación certificadas de alta eficiencia</p>
-                    </div>
-                </a>
-                <a href="productos.html#filtro-todos" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-gabinetes.jpg" alt="Gabinetes">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Gabinetes</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>Torres con excelente flujo de aire y diseño</p>
-                    </div>
-                </a>
-                <a href="productos.html#filtro-memorias" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-ram.jpg" alt="Memorias RAM">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Memorias RAM</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>Módulos de memoria DDR4 y DDR5 de alta velocidad</p>
-                    </div>
-                </a>
-                <a href="productos.html#filtro-monitores" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-monitores.jpg" alt="Monitores">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Monitores</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>Pantallas Full HD, 4K y ultra-wide para gaming y trabajo</p>
-                    </div>
-                </a>
-                <a href="productos.html#filtro-motherboards" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-motherboards.jpg" alt="Motherboards">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Motherboards</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>Placas madre con los últimos chipsets y conectividad</p>
-                    </div>
-                </a>
-                <a href="productos.html#filtro-placas" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-placas-video.jpg" alt="Placas de Video">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Placas de Video</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>GPUs NVIDIA y AMD para gaming y trabajo profesional</p>
-                    </div>
-                </a>
-                <a href="productos.html#filtro-procesadores" class="tarjeta-producto">
-                    <div class="producto-imagen">
-                        <img src="img/categoria-procesadores.jpg" alt="Procesadores">
-                    </div>
-                    <div class="producto-info">
-                        <h4>Procesadores</h4>
-                        <div class="producto-precio-container">
-                            <span class="producto-precio">Ver precios</span>
-                        </div>
-                    </div>
-                    <div class="producto-descripcion">
-                        <p>CPUs de última generación Intel y AMD para todas las necesidades</p>
-                    </div>
-                </a>
-            </div>
+            <div class="productos" id="categorias-lista"></div>
         </section>
 
         <section id="contacto">
@@ -194,54 +66,100 @@
     <script>
         document.addEventListener('catalogo:listo', function() {
             var ofertas = catalogoProductos.filter(function(p) { return p.oferta; });
-        var contenedor = document.getElementById('ofertas-destacadas');
+            var contenedor = document.getElementById('ofertas-destacadas');
 
-        ofertas.forEach(function(p) {
-            var enlace = document.createElement('a');
-            enlace.href = 'producto-detalle.html?id=' + p.id;
-            enlace.className = 'tarjeta-producto oferta';
+            ofertas.forEach(function(p) {
+                var enlace = document.createElement('a');
+                enlace.href = 'producto-detalle.html?id=' + p.id;
+                enlace.className = 'tarjeta-producto oferta';
 
-            var etiqueta = document.createElement('span');
-            etiqueta.className = 'etiqueta-oferta';
-            etiqueta.textContent = 'OFERTA';
-            enlace.appendChild(etiqueta);
+                var etiqueta = document.createElement('span');
+                etiqueta.className = 'etiqueta-oferta';
+                etiqueta.textContent = 'OFERTA';
+                enlace.appendChild(etiqueta);
 
-            var divImg = document.createElement('div');
-            divImg.className = 'producto-imagen';
-            var img = document.createElement('img');
-            img.src = p.imagen;
-            img.alt = p.nombre;
-            divImg.appendChild(img);
-            enlace.appendChild(divImg);
+                var divImg = document.createElement('div');
+                divImg.className = 'producto-imagen';
+                var img = document.createElement('img');
+                img.src = p.imagen;
+                img.alt = p.nombre;
+                divImg.appendChild(img);
+                enlace.appendChild(divImg);
 
-            var divInfo = document.createElement('div');
-            divInfo.className = 'producto-info';
-            var h4 = document.createElement('h4');
-            h4.textContent = p.nombre;
-            divInfo.appendChild(h4);
-            var precioContainer = document.createElement('div');
-            precioContainer.className = 'producto-precio-container';
-            var spanAnt = document.createElement('span');
-            spanAnt.className = 'producto-precio-anterior';
-            spanAnt.textContent = '$' + formatearPrecio(p.precioAnterior);
-            precioContainer.appendChild(spanAnt);
-            var precioSpan = document.createElement('span');
-            precioSpan.className = 'producto-precio';
-            precioSpan.textContent = '$' + formatearPrecio(p.precio);
-            precioContainer.appendChild(precioSpan);
-            divInfo.appendChild(precioContainer);
-            enlace.appendChild(divInfo);
+                var divInfo = document.createElement('div');
+                divInfo.className = 'producto-info';
+                var h4 = document.createElement('h4');
+                h4.textContent = p.nombre;
+                divInfo.appendChild(h4);
+                var precioContainer = document.createElement('div');
+                precioContainer.className = 'producto-precio-container';
+                var spanAnt = document.createElement('span');
+                spanAnt.className = 'producto-precio-anterior';
+                spanAnt.textContent = '$' + formatearPrecio(p.precioAnterior);
+                precioContainer.appendChild(spanAnt);
+                var precioSpan = document.createElement('span');
+                precioSpan.className = 'producto-precio';
+                precioSpan.textContent = '$' + formatearPrecio(p.precio);
+                precioContainer.appendChild(precioSpan);
+                divInfo.appendChild(precioContainer);
+                enlace.appendChild(divInfo);
 
-            var divDesc = document.createElement('div');
-            divDesc.className = 'producto-descripcion';
-            var pDesc = document.createElement('p');
-            pDesc.textContent = p.descripcion;
-            divDesc.appendChild(pDesc);
-            enlace.appendChild(divDesc);
+                var divDesc = document.createElement('div');
+                divDesc.className = 'producto-descripcion';
+                var pDesc = document.createElement('p');
+                pDesc.textContent = p.descripcion;
+                divDesc.appendChild(pDesc);
+                enlace.appendChild(divDesc);
 
-            contenedor.appendChild(enlace);
+                contenedor.appendChild(enlace);
+            });
         });
-        });
+
+        function renderizarCategorias() {
+            obtenerCategorias().then(function(categorias) {
+                var contenedor = document.getElementById('categorias-lista');
+                contenedor.innerHTML = '';
+                categorias.forEach(function(c) {
+                    var enlace = document.createElement('a');
+                    enlace.href = 'productos.html#filtro-' + c.slug;
+                    enlace.className = 'tarjeta-producto';
+
+                    var divImg = document.createElement('div');
+                    divImg.className = 'producto-imagen';
+                    var img = document.createElement('img');
+                    img.src = c.imagen;
+                    img.alt = c.nombre;
+                    divImg.appendChild(img);
+                    enlace.appendChild(divImg);
+
+                    var divInfo = document.createElement('div');
+                    divInfo.className = 'producto-info';
+                    var h4 = document.createElement('h4');
+                    h4.textContent = c.nombre;
+                    divInfo.appendChild(h4);
+                    var precioContainer = document.createElement('div');
+                    precioContainer.className = 'producto-precio-container';
+                    var precioSpan = document.createElement('span');
+                    precioSpan.className = 'producto-precio';
+                    precioSpan.textContent = 'Ver precios';
+                    precioContainer.appendChild(precioSpan);
+                    divInfo.appendChild(precioContainer);
+                    enlace.appendChild(divInfo);
+
+                    var divDesc = document.createElement('div');
+                    divDesc.className = 'producto-descripcion';
+                    var pDesc = document.createElement('p');
+                    pDesc.textContent = c.descripcion;
+                    divDesc.appendChild(pDesc);
+                    enlace.appendChild(divDesc);
+
+                    contenedor.appendChild(enlace);
+                });
+            });
+        }
+
+        renderizarCategorias();
     </script>
+<script src="js/carrito-nav.js"></script>
 </body>
 </html>

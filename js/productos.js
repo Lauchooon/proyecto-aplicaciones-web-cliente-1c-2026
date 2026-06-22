@@ -17,8 +17,21 @@ function obtenerCarrito() {
 
 function guardarEnCarrito(producto) {
     var carrito = obtenerCarrito();
-    carrito.push(producto);
+    var existente = null;
+    for (var i = 0; i < carrito.length; i++) {
+        if (carrito[i].id === producto.id) {
+            existente = carrito[i];
+            break;
+        }
+    }
+    if (existente) {
+        existente.cantidad = (existente.cantidad || 1) + 1;
+    } else {
+        producto.cantidad = 1;
+        carrito.push(producto);
+    }
     localStorage.setItem('carrito', JSON.stringify(carrito));
+    if (typeof actualizarCarritoNav === 'function') actualizarCarritoNav();
 }
 
 var catalogoProductos = [];
@@ -93,16 +106,47 @@ function renderizarProductos(array) {
     });
 }
 
+/* ---- Categorías ---- */
+var categoriasCargadas = [];
+
+function renderizarFiltros(categorias) {
+    var nav = document.getElementById('filtros-categoria');
+    if (!nav) return;
+    var titulos = document.getElementById('titulos-categoria');
+    nav.innerHTML = '';
+    titulos.innerHTML = '';
+
+    var linkTodos = document.createElement('a');
+    linkTodos.href = '#filtro-todos';
+    linkTodos.className = 'filtro-link activo';
+    linkTodos.textContent = 'Todos';
+    nav.appendChild(linkTodos);
+
+    categorias.forEach(function(c) {
+        var link = document.createElement('a');
+        link.href = '#filtro-' + c.slug;
+        link.className = 'filtro-link';
+        link.textContent = c.nombre;
+        link.dataset.categoria = c.slug;
+        nav.appendChild(link);
+
+        var titulo = document.createElement('h3');
+        titulo.className = 'titulo-categoria';
+        titulo.id = 'titulo-' + c.slug;
+        titulo.textContent = c.nombre;
+        titulos.appendChild(titulo);
+    });
+}
+
 /* ---- Filtros y ordenamiento ---- */
-var hashCategoria = {
-    'filtro-todos': null,
-    'filtro-procesadores': 'procesadores',
-    'filtro-memorias': 'memorias',
-    'filtro-discos': 'discos',
-    'filtro-placas': 'placas-video',
-    'filtro-motherboards': 'motherboards',
-    'filtro-monitores': 'monitores'
-};
+var hashCategoria = { 'filtro-todos': null };
+
+function construirHashCategoria(categorias) {
+    hashCategoria = { 'filtro-todos': null };
+    categorias.forEach(function(c) {
+        hashCategoria['filtro-' + c.slug] = c.slug;
+    });
+}
 
 function aplicarFiltros() {
     var rangoMin = document.getElementById('rango-min');
@@ -137,6 +181,20 @@ function aplicarFiltros() {
     }
 
     renderizarProductos(resultado);
+    actualizarFiltroActivo();
+}
+
+function actualizarFiltroActivo() {
+    var hash = window.location.hash.replace('#', '') || 'filtro-todos';
+    document.querySelectorAll('.filtro-link').forEach(function(link) {
+        var linkHash = link.getAttribute('href').replace('#', '');
+        link.classList.toggle('activo', linkHash === hash);
+    });
+    document.querySelectorAll('.titulo-categoria').forEach(function(t) {
+        var cat = t.id.replace('titulo-', '');
+        var activeCat = hashCategoria[hash];
+        t.style.display = (activeCat && cat === activeCat) ? 'block' : 'none';
+    });
 }
 
 /* ---- Inicialización desde Supabase ---- */
@@ -202,16 +260,26 @@ function catalogoListo() {
     document.dispatchEvent(evt);
 }
 
-if (typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL) {
-    obtenerProductos().then(function(productos) {
-        inicializarCatalogo(productos);
-        catalogoListo();
-    }).catch(function(err) {
-        console.error('Error al cargar productos desde Supabase:', err);
+obtenerCategorias().then(function(categorias) {
+    categoriasCargadas = categorias;
+    renderizarFiltros(categorias);
+    construirHashCategoria(categorias);
+
+    window.addEventListener('hashchange', function() {
+        aplicarFiltros();
+    });
+
+    if (typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL) {
+        return obtenerProductos().then(function(productos) {
+            inicializarCatalogo(productos);
+            catalogoListo();
+        }).catch(function(err) {
+            console.error('Error al cargar productos desde Supabase:', err);
+            inicializarCatalogo([]);
+            catalogoListo();
+        });
+    } else {
         inicializarCatalogo([]);
         catalogoListo();
-    });
-} else {
-    inicializarCatalogo([]);
-    catalogoListo();
-}
+    }
+});

@@ -11,15 +11,17 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.html">TechStore</a></h1>
-        <nav>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
                 <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
@@ -56,5 +58,6 @@
     <footer>
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
+<script src="js/carrito-nav.js"></script>
 </body>
 </html>

@@ -11,15 +11,17 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.html">TechStore</a></h1>
-        <nav>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
                 <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
@@ -36,21 +38,8 @@
         <h2>Catálogo de Productos</h2>
 
         <span id="filtro-todos" class="filtro-ancla"></span>
-        <span id="filtro-procesadores" class="filtro-ancla"></span>
-        <span id="filtro-memorias" class="filtro-ancla"></span>
-        <span id="filtro-discos" class="filtro-ancla"></span>
-        <span id="filtro-placas" class="filtro-ancla"></span>
-        <span id="filtro-motherboards" class="filtro-ancla"></span>
-        <span id="filtro-monitores" class="filtro-ancla"></span>
-
-        <nav class="filtros-categoria">
-            <a href="#filtro-todos">Todos</a>
-            <a href="#filtro-procesadores">Procesadores</a>
-            <a href="#filtro-memorias">Memorias RAM</a>
-            <a href="#filtro-discos">Discos SSD</a>
-            <a href="#filtro-placas">Placas de Video</a>
-            <a href="#filtro-motherboards">Motherboards</a>
-            <a href="#filtro-monitores">Monitores</a>
+        <nav class="filtros-categoria" id="filtros-categoria">
+            <a href="#filtro-todos" class="filtro-link activo">Todos</a>
         </nav>
 
         <div class="filtros-secundarios">
@@ -76,12 +65,7 @@
             </div>
         </div>
 
-        <h3 id="titulo-procesadores" class="titulo-categoria">Procesadores</h3>
-        <h3 id="titulo-memorias" class="titulo-categoria">Memorias RAM</h3>
-        <h3 id="titulo-discos" class="titulo-categoria">Discos SSD</h3>
-        <h3 id="titulo-placas-video" class="titulo-categoria">Placas de Video</h3>
-        <h3 id="titulo-motherboards" class="titulo-categoria">Motherboards</h3>
-        <h3 id="titulo-monitores" class="titulo-categoria">Monitores</h3>
+        <div id="titulos-categoria"></div>
 
         <div class="productos"></div>
     </main>
@@ -92,5 +76,6 @@
 
     <script src="js/supabase.js"></script>
     <script src="js/productos.js"></script>
+<script src="js/carrito-nav.js"></script>
 </body>
 </html>
