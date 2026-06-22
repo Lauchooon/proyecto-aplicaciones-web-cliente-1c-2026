@@ -1,23 +1,13 @@
 (function() {
-    var nombresCategoria = {
-        'procesadores': 'Procesadores',
-        'memorias': 'Memorias RAM',
-        'discos': 'Discos SSD',
-        'placas-video': 'Placas de Video',
-        'motherboards': 'Motherboards',
-        'monitores': 'Monitores',
-        'coolers': 'Coolers',
-        'fuentes': 'Fuentes',
-        'gabinetes': 'Gabinetes'
-    };
-
     function cargarCategorias() {
-        var select = document.getElementById('categoria');
-        Object.keys(nombresCategoria).sort().forEach(function(cat) {
-            var option = document.createElement('option');
-            option.value = cat;
-            option.textContent = nombresCategoria[cat];
-            select.appendChild(option);
+        obtenerCategorias().then(function(categorias) {
+            var select = document.getElementById('categoria');
+            categorias.forEach(function(c) {
+                var option = document.createElement('option');
+                option.value = c.slug;
+                option.textContent = c.nombre;
+                select.appendChild(option);
+            });
         });
     }
 

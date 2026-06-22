@@ -99,7 +99,11 @@
 }
 
 .producto-detalle .btn-carrito:hover {
-    background-color: var(--color-acento);
+    background-color: #888;
+}
+
+.producto-detalle .btn-carrito:active {
+    background-color: #666;
 }
 
 /* Tablet */

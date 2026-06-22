@@ -25,8 +25,26 @@ body {
 
 /* Header (base) */
 header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     padding: 1rem;
     border-bottom: var(--borde-fino) solid var(--color-texto);
+    background: var(--color-fondo);
+}
+
+/* Nav toggle (hamburger) */
+.nav-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.25rem;
+    user-select: none;
+    line-height: 1;
 }
 
 header h1 {
@@ -62,6 +80,18 @@ h3 {
 
 p {
     margin-bottom: 1rem;
+}
+
+/* Banner */
+.banner-wrapper {
+    overflow: hidden;
+}
+.banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 250px;
+    object-fit: cover;
 }
 
 /* Footer */
@@ -105,7 +135,7 @@ footer {
     }
 
     main {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
     }
 }

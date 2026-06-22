@@ -13,15 +13,17 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.html">TechStore</a></h1>
-        <nav>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
                 <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
@@ -159,6 +161,22 @@
                             <label for="titular">Titular de la tarjeta</label>
                             <input type="text" id="titular" name="titular">
                         </div>
+
+                        <div id="datos-transferencia">
+                            <label for="cbu">CBU</label>
+                            <input type="text" id="cbu" name="cbu" placeholder="0000000000000000000000">
+
+                            <label for="titular-transferencia">Titular de la cuenta</label>
+                            <input type="text" id="titular-transferencia" name="titular-transferencia">
+
+                            <label for="dni-transferencia">DNI del titular</label>
+                            <input type="text" id="dni-transferencia" name="dni-transferencia">
+                        </div>
+
+                        <div id="datos-efectivo">
+                            <label for="monto-efectivo">Monto con el que abonás</label>
+                            <input type="text" id="monto-efectivo" name="monto-efectivo" placeholder="$">
+                        </div>
                     </fieldset>
 
                     <button type="submit" class="btn-checkout">Confirmar Pedido</button>
@@ -207,7 +225,7 @@
 
         function calcularTotales() {
             var carrito = obtenerCarrito();
-            var subtotal = carrito.reduce(function(acc, p) { return acc + p.precio; }, 0);
+            var subtotal = carrito.reduce(function(acc, p) { return acc + p.precio * (p.cantidad || 1); }, 0);
             var envioRadio = document.querySelector('input[name="envio"]:checked');
             var costoEnvio = envioRadio ? parseInt(envioRadio.dataset.costo) : 0;
             var total = subtotal + costoEnvio;
@@ -226,11 +244,13 @@
             }
 
             carrito.forEach(function(producto) {
+                var cantidad = producto.cantidad || 1;
+                var subtotalItem = producto.precio * cantidad;
                 var div = document.createElement('div');
                 div.className = 'resumen-item';
                 div.innerHTML = '<span class="resumen-item-nombre">' + producto.nombre + '</span>' +
-                    '<span class="resumen-item-cant">x1</span>' +
-                    '<span class="resumen-item-precio">$' + formatearPrecio(producto.precio) + '</span>';
+                    '<span class="resumen-item-cant">x' + cantidad + '</span>' +
+                    '<span class="resumen-item-precio">$' + formatearPrecio(subtotalItem) + '</span>';
                 contenedor.appendChild(div);
             });
 
@@ -251,12 +271,25 @@
             return 'TS-' + anio + '-' + String(num).padStart(6, '0');
         }
 
+        function mostrarSeccionPago() {
+            var metodo = document.querySelector('input[name="pago"]:checked').value;
+            document.getElementById('datos-tarjeta').style.display = metodo === 'tarjeta' ? 'block' : 'none';
+            document.getElementById('datos-transferencia').style.display = metodo === 'transferencia' ? 'block' : 'none';
+            document.getElementById('datos-efectivo').style.display = metodo === 'efectivo' ? 'block' : 'none';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             renderizarResumen();
+            mostrarSeccionPago();
 
             var envioRadios = document.querySelectorAll('input[name="envio"]');
             envioRadios.forEach(function(r) {
                 r.addEventListener('change', actualizarTotales);
+            });
+
+            var pagoRadios = document.querySelectorAll('input[name="pago"]');
+            pagoRadios.forEach(function(r) {
+                r.addEventListener('change', mostrarSeccionPago);
             });
 
             document.getElementById('form-checkout').addEventListener('submit', function(e) {
@@ -270,12 +303,27 @@
 
                 var formData = new FormData(this);
                 var tot = calcularTotales();
+                var metodoPago = formData.get('pago');
+                var datosPago = { metodo: metodoPago };
+
+                if (metodoPago === 'tarjeta') {
+                    datosPago.numero = formData.get('num-tarjeta');
+                    datosPago.vencimiento = formData.get('fecha-venc');
+                    datosPago.cvv = formData.get('cvv');
+                    datosPago.titular = formData.get('titular');
+                } else if (metodoPago === 'transferencia') {
+                    datosPago.cbu = formData.get('cbu');
+                    datosPago.titular = formData.get('titular-transferencia');
+                    datosPago.dni = formData.get('dni-transferencia');
+                } else if (metodoPago === 'efectivo') {
+                    datosPago.monto = formData.get('monto-efectivo');
+                }
 
                 var orden = {
                     numero: generarNumeroOrden(),
                     fecha: new Date().toISOString(),
                     productos: carrito.map(function(p) {
-                        return { id: p.id, nombre: p.nombre, precio: p.precio };
+                        return { id: p.id, nombre: p.nombre, precio: p.precio, cantidad: p.cantidad || 1 };
                     }),
                     envio: {
                         tipo: formData.get('envio'),
@@ -287,9 +335,7 @@
                         telefono: formData.get('telefono'),
                         costo: tot.envio
                     },
-                    pago: {
-                        metodo: formData.get('pago')
-                    },
+                    pago: datosPago,
                     subtotal: tot.subtotal,
                     total: tot.total
                 };
@@ -304,5 +350,6 @@
             });
         });
     </script>
+<script src="js/carrito-nav.js"></script>
 </body>
 </html>

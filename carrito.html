@@ -12,15 +12,17 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.html">TechStore</a></h1>
-        <nav>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="contact.html">Contacto</a></li>
                 <li><a href="new-product.html">Alta Producto</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
                 <li><a href="login-user.html">Iniciar Sesión</a></li>
             </ul>
             <div class="buscador">
@@ -72,6 +74,7 @@
                 <span>Total</span>
                 <strong>$348.000</strong>
             </div>
+            <button class="btn-vaciar-carrito">Vaciar carrito</button>
             <a href="checkout.html" class="btn-checkout">Continuar con el pago</a>
         </div>
     </main>
@@ -102,6 +105,9 @@
             tbody.innerHTML = '';
 
             carrito.forEach(function(producto, index) {
+                var cantidad = producto.cantidad || 1;
+                var subtotalItem = producto.precio * cantidad;
+
                 var tr = document.createElement('tr');
 
                 var tdProducto = document.createElement('td');
@@ -125,32 +131,77 @@
 
                 var tdCantidad = document.createElement('td');
                 tdCantidad.className = 'col-cantidad';
+
+                var controlDiv = document.createElement('div');
+                controlDiv.className = 'cantidad-control';
+
+                var btnMenos = document.createElement('button');
+                btnMenos.className = 'cantidad-btn cantidad-menos';
+                btnMenos.textContent = '\u2212';
+                btnMenos.addEventListener('click', function() {
+                    var val = (producto.cantidad || 1) - 1;
+                    if (val < 1) val = 1;
+                    producto.cantidad = val;
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderizarCarrito();
+                });
+                controlDiv.appendChild(btnMenos);
+
                 var inputCant = document.createElement('input');
                 inputCant.type = 'number';
                 inputCant.className = 'cantidad-input';
-                inputCant.value = 1;
+                inputCant.value = cantidad;
                 inputCant.min = 1;
-                tdCantidad.appendChild(inputCant);
+                inputCant.addEventListener('change', function() {
+                    var val = parseInt(this.value);
+                    if (val < 1) val = 1;
+                    producto.cantidad = val;
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderizarCarrito();
+                });
+                controlDiv.appendChild(inputCant);
+
+                var btnMas = document.createElement('button');
+                btnMas.className = 'cantidad-btn cantidad-mas';
+                btnMas.textContent = '+';
+                btnMas.addEventListener('click', function() {
+                    producto.cantidad = (producto.cantidad || 1) + 1;
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderizarCarrito();
+                });
+                controlDiv.appendChild(btnMas);
+
+                tdCantidad.appendChild(controlDiv);
                 tr.appendChild(tdCantidad);
 
                 var tdSubtotal = document.createElement('td');
                 tdSubtotal.className = 'col-subtotal';
-                tdSubtotal.textContent = '$' + formatearPrecio(producto.precio);
+                tdSubtotal.textContent = '$' + formatearPrecio(subtotalItem);
                 tr.appendChild(tdSubtotal);
 
                 tbody.appendChild(tr);
             });
 
-            var subtotal = carrito.reduce(function(acc, p) { return acc + p.precio; }, 0);
+            var subtotal = carrito.reduce(function(acc, p) { return acc + p.precio * (p.cantidad || 1); }, 0);
             var envio = 3000;
             var total = subtotal + envio;
 
             subtotales[0].textContent = '$' + formatearPrecio(subtotal);
             subtotales[1].textContent = '$' + formatearPrecio(envio);
             subtotales[2].textContent = '$' + formatearPrecio(total);
+
+            if (typeof actualizarCarritoNav === 'function') actualizarCarritoNav();
         }
+
+        function vaciarCarrito() {
+            localStorage.removeItem('carrito');
+            renderizarCarrito();
+        }
+
+        document.querySelector('.btn-vaciar-carrito').addEventListener('click', vaciarCarrito);
 
         renderizarCarrito();
     </script>
+<script src="js/carrito-nav.js"></script>
 </body>
 </html>

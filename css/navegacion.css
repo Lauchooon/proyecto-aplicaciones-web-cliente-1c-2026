@@ -92,39 +92,14 @@ header nav {
 }
 
 /* Ancla activa: resalta el link correspondiente */
-#filtro-todos:target ~ .filtros-categoria a[href="#filtro-todos"],
-#filtro-procesadores:target ~ .filtros-categoria a[href="#filtro-procesadores"],
-#filtro-memorias:target ~ .filtros-categoria a[href="#filtro-memorias"],
-#filtro-discos:target ~ .filtros-categoria a[href="#filtro-discos"],
-#filtro-placas:target ~ .filtros-categoria a[href="#filtro-placas"],
-#filtro-motherboards:target ~ .filtros-categoria a[href="#filtro-motherboards"],
-#filtro-monitores:target ~ .filtros-categoria a[href="#filtro-monitores"] {
+.filtro-link.activo {
     background-color: var(--color-primario);
     color: var(--color-fondo);
     border-color: var(--color-primario);
 }
 
-/* Títulos de categoría: ocultos por defecto, visibles solo con :target */
+/* Títulos de categoría: ocultos por defecto */
 .titulo-categoria {
-    display: none;
-}
-
-#filtro-procesadores:target ~ #titulo-procesadores,
-#filtro-memorias:target ~ #titulo-memorias,
-#filtro-discos:target ~ #titulo-discos,
-#filtro-placas:target ~ #titulo-placas-video,
-#filtro-motherboards:target ~ #titulo-motherboards,
-#filtro-monitores:target ~ #titulo-monitores {
-    display: block;
-}
-
-/* Oculta productos de categorías no seleccionadas */
-#filtro-procesadores:target ~ .productos .tarjeta-producto:not([data-categoria="procesadores"]),
-#filtro-memorias:target ~ .productos .tarjeta-producto:not([data-categoria="memorias"]),
-#filtro-discos:target ~ .productos .tarjeta-producto:not([data-categoria="discos"]),
-#filtro-placas:target ~ .productos .tarjeta-producto:not([data-categoria="placas-video"]),
-#filtro-motherboards:target ~ .productos .tarjeta-producto:not([data-categoria="motherboards"]),
-#filtro-monitores:target ~ .productos .tarjeta-producto:not([data-categoria="monitores"]) {
     display: none;
 }
 
@@ -245,7 +220,158 @@ header nav {
     border-color: var(--color-primario);
 }
 
+/* Carrito nav item */
+.nav-carrito {
+    position: relative;
+}
+
+.carrito-badge {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: -8px;
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    font-size: 0.7rem;
+    font-weight: bold;
+    min-width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 50%;
+    padding: 0 4px;
+}
+
+.carrito-preview {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background-color: var(--color-fondo);
+    border: var(--borde-fino) solid var(--color-texto);
+    z-index: 100;
+    padding: 0.5rem;
+}
+
+.nav-carrito:hover .carrito-preview {
+    display: block;
+}
+
+.carrito-preview-vacio {
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+.carrito-preview-lista {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.carrito-preview-item {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0;
+    font-size: 0.8rem;
+    gap: 0.4rem;
+}
+
+.carrito-preview-item:not(:last-child) {
+    border-bottom: var(--borde-fino) solid var(--color-texto);
+    border-bottom-color: rgba(0,0,0,0.1);
+}
+
+.carrito-preview-nombre {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.carrito-preview-detalle {
+    white-space: nowrap;
+    opacity: 0.7;
+    font-size: 0.75rem;
+}
+
+.carrito-preview-precio {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.carrito-preview-eliminar {
+    background: none;
+    border: none;
+    color: var(--color-primario);
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 0.1rem 0.3rem;
+    line-height: 1;
+}
+
+.carrito-preview-eliminar:hover {
+    font-weight: bold;
+}
+
+.carrito-preview-subtotal {
+    text-align: right;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    border-top: var(--borde-fino) solid var(--color-texto);
+    border-top-color: rgba(0,0,0,0.15);
+    margin-top: 0.25rem;
+}
+
+.carrito-preview-link {
+    display: block;
+    text-align: center;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.carrito-preview-link:hover {
+    background-color: var(--color-acento);
+}
+
+/* Mobile: hamburger visible, nav hidden by default */
+@media (max-width: 767px) {
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        width: 100%;
+    }
+
+    #nav-toggle:checked ~ nav {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 /* Tablet */
+@media (min-width: 768px) {
+    .carrito-preview {
+        left: auto;
+        right: 0;
+    }
+}
 @media (min-width: 768px) {
     header nav {
         flex-direction: row;
