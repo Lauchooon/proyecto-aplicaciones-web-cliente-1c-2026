@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Pedido Confirmado</title>
+    <meta name="description" content="Tu pedido ha sido confirmado - TechStore">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <header>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Pedido Confirmado</h2>
+
+        <div class="pasos-checkout">
+            <a href="carrito.html" class="paso">Carrito</a>
+            <span class="paso-separador"></span>
+            <a href="checkout.html" class="paso">Pago y Envío</a>
+            <span class="paso-separador"></span>
+            <span class="paso activo">Confirmación</span>
+        </div>
+
+        <div class="confirmacion">
+            <div class="confirmacion-icono">&#10003;</div>
+            <h3>¡Gracias por tu compra!</h3>
+            <p class="confirmacion-numero" id="conf-numero">Pedido <strong>#TS-2026-000000</strong></p>
+            <p>Te enviaremos un correo electrónico con los detalles de tu pedido y el número de seguimiento una vez que el paquete sea despachado.</p>
+        </div>
+
+        <div class="confirmacion-detalle" id="conf-detalle">
+            <div class="confirmacion-columna">
+                <h4>Dirección de envío</h4>
+                <p id="conf-direccion"></p>
+
+                <h4>Método de envío</h4>
+                <p id="conf-envio"></p>
+
+                <h4>Método de pago</h4>
+                <p id="conf-pago"></p>
+            </div>
+
+            <div class="confirmacion-columna">
+                <h4>Productos</h4>
+                <table class="tabla-carrito">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th class="col-cantidad">Cant.</th>
+                            <th class="col-subtotal">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="conf-productos"></tbody>
+                </table>
+
+                <div class="resumen-totales confirmacion-totales">
+                    <div class="fila-total">
+                        <span>Subtotal</span>
+                        <strong id="conf-subtotal">$0</strong>
+                    </div>
+                    <div class="fila-total">
+                        <span>Envío</span>
+                        <strong id="conf-envio-costo">$0</strong>
+                    </div>
+                    <div class="fila-total total-final">
+                        <span>Total</span>
+                        <strong id="conf-total">$0</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirmacion-acciones">
+            <a href="productos.html" class="btn-checkout">Seguir comprando</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function formatearPrecio(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function nombreEnvio(tipo) {
+            var nombres = { estandar: 'Envío estándar (5-7 días hábiles)', expres: 'Envío exprés (2-3 días hábiles)', retiro: 'Retiro en tienda' };
+            return nombres[tipo] || tipo;
+        }
+
+        function nombrePago(metodo) {
+            var nombres = { tarjeta: 'Tarjeta de crédito/débito', transferencia: 'Transferencia bancaria', efectivo: 'Efectivo (contra entrega)' };
+            return nombres[metodo] || metodo;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var ordenData = sessionStorage.getItem('orden');
+            if (!ordenData) {
+                document.getElementById('conf-detalle').innerHTML = '<p style="text-align:center;padding:2rem">No se encontraron datos de la orden.</p>';
+                return;
+            }
+
+            var orden = JSON.parse(ordenData);
+
+            document.getElementById('conf-numero').innerHTML = 'Pedido <strong>#' + orden.numero + '</strong>';
+
+            var dirHtml = orden.envio.nombre + '<br>' +
+                orden.envio.direccion + '<br>' +
+                orden.envio.ciudad + ', ' + orden.envio.provincia + '<br>' +
+                'CP ' + orden.envio.codigo_postal + '<br>' +
+                'Tel: ' + orden.envio.telefono;
+            document.getElementById('conf-direccion').innerHTML = dirHtml;
+
+            document.getElementById('conf-envio').textContent = nombreEnvio(orden.envio.tipo) + ' - $' + formatearPrecio(orden.envio.costo);
+
+            document.getElementById('conf-pago').textContent = nombrePago(orden.pago.metodo);
+
+            var tbody = document.getElementById('conf-productos');
+            orden.productos.forEach(function(p) {
+                var tr = document.createElement('tr');
+                tr.innerHTML = '<td>' + p.nombre + '</td>' +
+                    '<td class="col-cantidad">1</td>' +
+                    '<td class="col-subtotal">$' + formatearPrecio(p.precio) + '</td>';
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('conf-subtotal').textContent = '$' + formatearPrecio(orden.subtotal);
+            document.getElementById('conf-envio-costo').textContent = '$' + formatearPrecio(orden.envio.costo);
+            document.getElementById('conf-total').textContent = '$' + formatearPrecio(orden.total);
+        });
+    </script>
+<script src="js/carrito-nav.js"></script>
+</body>
+</html>

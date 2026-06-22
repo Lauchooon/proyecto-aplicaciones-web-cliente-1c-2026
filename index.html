@@ -3,59 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRepuestos - Tu tienda de repuestos para automóviles</title>
-    <link rel="stylesheet" href="/style/style.css">
-    <meta name="description" content="Encuentra los mejores repuestos para tu vehículo. Amplio catálogo de piezas automotor.">
-    <script src="/js/config.js" defer></script>
-    <script src="/js/script.js" defer></script>
+    <title>TechStore - Tu tienda de informática</title>
+    <meta name="description" content="Encuentra los mejores componentes de informática. Amplio catálogo de hardware para tu PC.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/tarjetas.css">
 </head>
 <body>
-    <header class="ml-header">
-        <div class="ml-header-top">
-            <a href="/" class="ml-logo">
-                <span class="ml-logo-icon">🏠</span>
-                <div class="ml-logo-text">
-                    <span class="ml-logo-title">Repuestos</span>
-                    <span class="ml-logo-subtitle">Pepito</span>
-                </div>
-            </a>
-            
-            <div class="ml-search">
-                <form action="/search" method="get" class="ml-search-form">
-                    <input type="text" id="input-search" placeholder="Buscar productos, marcas, categorías..." class="ml-search-input">
-                    <button type="submit" class="ml-search-btn">
-                        <span>🔍</span>
-                    </button>
+    <header>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
                 </form>
             </div>
-            
-            <a href="/cart.html" class="ml-cart-icon" id="cart-link">
-                <span>🛒</span>
-                <span class="ml-cart-count" id="cart-header-count">0</span>
-            </a>
-            <div class="ml-header-actions">
-                <nav class="ml-nav">
-                    <ul class="ml-nav-list">
-                        <li><a href="#productos" class="ml-nav-link">Ofertas</a></li>
-                        <li><a href="/about.html" class="ml-nav-link">Nosotros</a></li>
-                        <li><a href="/contact.html" class="ml-nav-link">Contacto</a></li>
-                        <li><a href="/new-product.html" class="ml-nav-link">Admin</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        
-        <div class="ml-categories-bar">
-            <ul class="ml-categories-list">
-                <li><a href="#motor">Motor</a></li>
-                <li><a href="#frenos">Frenos</a></li>
-                <li><a href="#suspension">Suspensión</a></li>
-                <li><a href="#electrico">Eléctrico</a></li>
-                <li><a href="#carroceria">Carrocería</a></li>
-                <li><a href="#accesorios">Accesorios</a></li>
-
-            </ul>
-        </div>
+        </nav>
     </header>
 
     <aside id="sidebar">
@@ -128,58 +104,131 @@
     </aside>
 
     <main>
-        <img src="/img/filtrodeaceite.jpg" alt="Banner de Repuestos de Calidad" width="20%">
+        <div class="banner-wrapper"><img class="banner" src="img/banner-techstore.png" alt="Banner de Tecnología"></div>
+
+        <section id="destacados">
+            <h2>Productos en Oferta</h2>
+            <div class="productos" id="ofertas-destacadas"></div>
+        </section>
 
         <section id="productos">
             <h2>Nuestros Productos</h2>
-            
-            <div class="products-grid">
-            <!--
-                <article class="product-card">
-                    <div class="product-image-container">
-                        <span class="badge-envio">Envío gratis</span>
-                        <img src="https://http2.mlstatic.com/D_NQ_NP_637894-MLA81758252428_122024-O.webp" alt="Filtro de Aceite" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Filtro de Aceite Original Toyota</h3>
-                        <p class="product-price">$12.999</p>
-                        <p class="product-cuotas">12x $1.083 sin interés</p>
-                        <p class="product-location">Capital Federal</p>
-                    </div>
-                </article>
-            -->
-                
-            </div>
+            <div class="productos" id="categorias-lista"></div>
+        </section>
 
-            <article>
-                <h3 id="motor">Repuestos de Motor</h3>
-                <p>Filtros, bujías, correas, rodamientos y más para el corazón de tu vehículo.</p>
-            </article>
-            <article>
-                <h3 id="frenos">Repuestos de Frenos</h3>
-                <p>Pastillas, discos, tambores, líquido de frenos y accesorios de seguridad.</p>
-            </article>
-            <article>
-                <h3 id="suspension">Suspensión y Dirección</h3>
-                <p>Amortiguadores, rotulas, barillas, bujes y componentes de suspensión.</p>
-            </article>
-            <article>
-                <h3 id="electrico">Eléctricos y Electrónicos</h3>
-                <p>Baterías, alternadores, sensores, luces y sistemas de iluminación.</p>
-            </article>
-            <article>
-                <h3 id="carroceria">Carrocería</h3>
-                <p>Parachoques, espejos, faros, luces y accesorios exteriores.</p>
-            </article>
-            <article>
-                <h3>Accesorios</h3>
-                <p>Limpiadores, lubricantes, herramientas y productos de mantenimiento.</p>
-            </article>
+        <section id="contacto">
+            <address>
+                <p>Dirección: Avenida 51 N°485 entre 4 y 5</p>
+                <p>Teléfono: 221-422-6165</p>
+                <p>Email: contacto@techstorelp.com</p>
+                <p>Horario: Lunes a Sábados de 9:00 a 21:00 hs</p>
+            </address>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/productos.js"></script>
+    <script>
+        document.addEventListener('catalogo:listo', function() {
+            var ofertas = catalogoProductos.filter(function(p) { return p.oferta; });
+            var contenedor = document.getElementById('ofertas-destacadas');
+
+            ofertas.forEach(function(p) {
+                var enlace = document.createElement('a');
+                enlace.href = 'producto-detalle.html?id=' + p.id;
+                enlace.className = 'tarjeta-producto oferta';
+
+                var etiqueta = document.createElement('span');
+                etiqueta.className = 'etiqueta-oferta';
+                etiqueta.textContent = 'OFERTA';
+                enlace.appendChild(etiqueta);
+
+                var divImg = document.createElement('div');
+                divImg.className = 'producto-imagen';
+                var img = document.createElement('img');
+                img.src = p.imagen;
+                img.alt = p.nombre;
+                divImg.appendChild(img);
+                enlace.appendChild(divImg);
+
+                var divInfo = document.createElement('div');
+                divInfo.className = 'producto-info';
+                var h4 = document.createElement('h4');
+                h4.textContent = p.nombre;
+                divInfo.appendChild(h4);
+                var precioContainer = document.createElement('div');
+                precioContainer.className = 'producto-precio-container';
+                var spanAnt = document.createElement('span');
+                spanAnt.className = 'producto-precio-anterior';
+                spanAnt.textContent = '$' + formatearPrecio(p.precioAnterior);
+                precioContainer.appendChild(spanAnt);
+                var precioSpan = document.createElement('span');
+                precioSpan.className = 'producto-precio';
+                precioSpan.textContent = '$' + formatearPrecio(p.precio);
+                precioContainer.appendChild(precioSpan);
+                divInfo.appendChild(precioContainer);
+                enlace.appendChild(divInfo);
+
+                var divDesc = document.createElement('div');
+                divDesc.className = 'producto-descripcion';
+                var pDesc = document.createElement('p');
+                pDesc.textContent = p.descripcion;
+                divDesc.appendChild(pDesc);
+                enlace.appendChild(divDesc);
+
+                contenedor.appendChild(enlace);
+            });
+        });
+
+        function renderizarCategorias() {
+            obtenerCategorias().then(function(categorias) {
+                var contenedor = document.getElementById('categorias-lista');
+                contenedor.innerHTML = '';
+                categorias.forEach(function(c) {
+                    var enlace = document.createElement('a');
+                    enlace.href = 'productos.html#filtro-' + c.slug;
+                    enlace.className = 'tarjeta-producto';
+
+                    var divImg = document.createElement('div');
+                    divImg.className = 'producto-imagen';
+                    var img = document.createElement('img');
+                    img.src = c.imagen;
+                    img.alt = c.nombre;
+                    divImg.appendChild(img);
+                    enlace.appendChild(divImg);
+
+                    var divInfo = document.createElement('div');
+                    divInfo.className = 'producto-info';
+                    var h4 = document.createElement('h4');
+                    h4.textContent = c.nombre;
+                    divInfo.appendChild(h4);
+                    var precioContainer = document.createElement('div');
+                    precioContainer.className = 'producto-precio-container';
+                    var precioSpan = document.createElement('span');
+                    precioSpan.className = 'producto-precio';
+                    precioSpan.textContent = 'Ver precios';
+                    precioContainer.appendChild(precioSpan);
+                    divInfo.appendChild(precioContainer);
+                    enlace.appendChild(divInfo);
+
+                    var divDesc = document.createElement('div');
+                    divDesc.className = 'producto-descripcion';
+                    var pDesc = document.createElement('p');
+                    pDesc.textContent = c.descripcion;
+                    divDesc.appendChild(pDesc);
+                    enlace.appendChild(divDesc);
+
+                    contenedor.appendChild(enlace);
+                });
+            });
+        }
+
+        renderizarCategorias();
+    </script>
+<script src="js/carrito-nav.js"></script>
 </body>
 </html>

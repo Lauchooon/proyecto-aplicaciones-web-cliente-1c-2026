@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Pago y Envío</title>
+    <meta name="description" content="Formulario de pago y envío de TechStore">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <header>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Pago y Envío</h2>
+
+        <div class="pasos-checkout">
+            <a href="carrito.html" class="paso">Carrito</a>
+            <span class="paso-separador"></span>
+            <span class="paso activo">Pago y Envío</span>
+            <span class="paso-separador"></span>
+            <span class="paso">Confirmación</span>
+        </div>
+
+        <div class="checkout-layout">
+            <div class="checkout-formularios">
+                <form id="form-checkout">
+                    <fieldset>
+                        <legend>Información de Envío</legend>
+
+                        <label for="nombre-completo">Nombre completo</label>
+                        <input type="text" id="nombre-completo" name="nombre" required>
+
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" required>
+
+                        <div class="campo-doble">
+                            <div>
+                                <label for="ciudad">Ciudad</label>
+                                <input type="text" id="ciudad" name="ciudad" required>
+                            </div>
+                            <div>
+                                <label for="provincia">Provincia</label>
+                                <select id="provincia" name="provincia" required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="bsas">Buenos Aires</option>
+                                    <option value="caba">CABA</option>
+                                    <option value="catamarca">Catamarca</option>
+                                    <option value="chaco">Chaco</option>
+                                    <option value="chubut">Chubut</option>
+                                    <option value="cordoba">Córdoba</option>
+                                    <option value="corrientes">Corrientes</option>
+                                    <option value="er">Entre Ríos</option>
+                                    <option value="formosa">Formosa</option>
+                                    <option value="jujuy">Jujuy</option>
+                                    <option value="lapampa">La Pampa</option>
+                                    <option value="larioja">La Rioja</option>
+                                    <option value="mendoza">Mendoza</option>
+                                    <option value="misiones">Misiones</option>
+                                    <option value="neuquen">Neuquén</option>
+                                    <option value="rn">Río Negro</option>
+                                    <option value="salta">Salta</option>
+                                    <option value="sj">San Juan</option>
+                                    <option value="sl">San Luis</option>
+                                    <option value="sc">Santa Cruz</option>
+                                    <option value="sfe">Santa Fe</option>
+                                    <option value="sdelestero">Santiago del Estero</option>
+                                    <option value="tf">Tierra del Fuego</option>
+                                    <option value="tucuman">Tucumán</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="campo-doble">
+                            <div>
+                                <label for="codigo-postal">Código Postal</label>
+                                <input type="text" id="codigo-postal" name="codigo-postal" required>
+                            </div>
+                            <div>
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Método de Envío</legend>
+                        <div class="opciones-envio">
+                            <label>
+                                <input type="radio" name="envio" value="estandar" data-costo="3000" checked>
+                                Envío estándar (5-7 días hábiles) - $3.000
+                            </label>
+                            <label>
+                                <input type="radio" name="envio" value="expres" data-costo="5500">
+                                Envío exprés (2-3 días hábiles) - $5.500
+                            </label>
+                            <label>
+                                <input type="radio" name="envio" value="retiro" data-costo="0">
+                                Retiro en tienda - Sin costo
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Método de Pago</legend>
+                        <div class="opciones-pago">
+                            <label>
+                                <input type="radio" name="pago" value="tarjeta" checked>
+                                Tarjeta de crédito/débito
+                            </label>
+                            <label>
+                                <input type="radio" name="pago" value="transferencia">
+                                Transferencia bancaria
+                            </label>
+                            <label>
+                                <input type="radio" name="pago" value="efectivo">
+                                Efectivo (contra entrega)
+                            </label>
+                        </div>
+
+                        <div id="datos-tarjeta">
+                            <label for="num-tarjeta">Número de tarjeta</label>
+                            <input type="text" id="num-tarjeta" name="num-tarjeta" placeholder="1234 5678 9012 3456">
+
+                            <div class="campo-doble">
+                                <div>
+                                    <label for="fecha-venc">Fecha de vencimiento</label>
+                                    <input type="text" id="fecha-venc" name="fecha-venc" placeholder="MM/AA">
+                                </div>
+                                <div>
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="123">
+                                </div>
+                            </div>
+
+                            <label for="titular">Titular de la tarjeta</label>
+                            <input type="text" id="titular" name="titular">
+                        </div>
+
+                        <div id="datos-transferencia">
+                            <label for="cbu">CBU</label>
+                            <input type="text" id="cbu" name="cbu" placeholder="0000000000000000000000">
+
+                            <label for="titular-transferencia">Titular de la cuenta</label>
+                            <input type="text" id="titular-transferencia" name="titular-transferencia">
+
+                            <label for="dni-transferencia">DNI del titular</label>
+                            <input type="text" id="dni-transferencia" name="dni-transferencia">
+                        </div>
+
+                        <div id="datos-efectivo">
+                            <label for="monto-efectivo">Monto con el que abonás</label>
+                            <input type="text" id="monto-efectivo" name="monto-efectivo" placeholder="$">
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="btn-checkout">Confirmar Pedido</button>
+                </form>
+            </div>
+
+            <aside class="checkout-resumen">
+                <h3>Resumen del pedido</h3>
+                <div class="resumen-items" id="resumen-items"></div>
+                <div class="resumen-totales">
+                    <div class="fila-total">
+                        <span>Subtotal</span>
+                        <strong id="resumen-subtotal">$0</strong>
+                    </div>
+                    <div class="fila-total">
+                        <span>Envío</span>
+                        <strong id="resumen-envio">$0</strong>
+                    </div>
+                    <div class="fila-total total-final">
+                        <span>Total</span>
+                        <strong id="resumen-total">$0</strong>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/supabase.js"></script>
+    <script>
+        function formatearPrecio(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function obtenerCarrito() {
+            try {
+                var data = localStorage.getItem('carrito');
+                return data ? JSON.parse(data) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function calcularTotales() {
+            var carrito = obtenerCarrito();
+            var subtotal = carrito.reduce(function(acc, p) { return acc + p.precio * (p.cantidad || 1); }, 0);
+            var envioRadio = document.querySelector('input[name="envio"]:checked');
+            var costoEnvio = envioRadio ? parseInt(envioRadio.dataset.costo) : 0;
+            var total = subtotal + costoEnvio;
+            return { subtotal: subtotal, envio: costoEnvio, total: total };
+        }
+
+        function renderizarResumen() {
+            var carrito = obtenerCarrito();
+            var contenedor = document.getElementById('resumen-items');
+            contenedor.innerHTML = '';
+
+            if (carrito.length === 0) {
+                contenedor.innerHTML = '<p style="text-align:center;padding:1rem">No hay productos en tu carrito.</p>';
+                document.querySelector('.btn-checkout').disabled = true;
+                return;
+            }
+
+            carrito.forEach(function(producto) {
+                var cantidad = producto.cantidad || 1;
+                var subtotalItem = producto.precio * cantidad;
+                var div = document.createElement('div');
+                div.className = 'resumen-item';
+                div.innerHTML = '<span class="resumen-item-nombre">' + producto.nombre + '</span>' +
+                    '<span class="resumen-item-cant">x' + cantidad + '</span>' +
+                    '<span class="resumen-item-precio">$' + formatearPrecio(subtotalItem) + '</span>';
+                contenedor.appendChild(div);
+            });
+
+            actualizarTotales();
+        }
+
+        function actualizarTotales() {
+            var tot = calcularTotales();
+            document.getElementById('resumen-subtotal').textContent = '$' + formatearPrecio(tot.subtotal);
+            document.getElementById('resumen-envio').textContent = '$' + formatearPrecio(tot.envio);
+            document.getElementById('resumen-total').textContent = '$' + formatearPrecio(tot.total);
+        }
+
+        function generarNumeroOrden() {
+            var now = new Date();
+            var anio = now.getFullYear();
+            var num = Math.floor(Math.random() * 900000) + 100000;
+            return 'TS-' + anio + '-' + String(num).padStart(6, '0');
+        }
+
+        function mostrarSeccionPago() {
+            var metodo = document.querySelector('input[name="pago"]:checked').value;
+            document.getElementById('datos-tarjeta').style.display = metodo === 'tarjeta' ? 'block' : 'none';
+            document.getElementById('datos-transferencia').style.display = metodo === 'transferencia' ? 'block' : 'none';
+            document.getElementById('datos-efectivo').style.display = metodo === 'efectivo' ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderizarResumen();
+            mostrarSeccionPago();
+
+            var envioRadios = document.querySelectorAll('input[name="envio"]');
+            envioRadios.forEach(function(r) {
+                r.addEventListener('change', actualizarTotales);
+            });
+
+            var pagoRadios = document.querySelectorAll('input[name="pago"]');
+            pagoRadios.forEach(function(r) {
+                r.addEventListener('change', mostrarSeccionPago);
+            });
+
+            document.getElementById('form-checkout').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var carrito = obtenerCarrito();
+                if (carrito.length === 0) {
+                    alert('No hay productos en tu carrito.');
+                    return;
+                }
+
+                var formData = new FormData(this);
+                var tot = calcularTotales();
+                var metodoPago = formData.get('pago');
+                var datosPago = { metodo: metodoPago };
+
+                if (metodoPago === 'tarjeta') {
+                    datosPago.numero = formData.get('num-tarjeta');
+                    datosPago.vencimiento = formData.get('fecha-venc');
+                    datosPago.cvv = formData.get('cvv');
+                    datosPago.titular = formData.get('titular');
+                } else if (metodoPago === 'transferencia') {
+                    datosPago.cbu = formData.get('cbu');
+                    datosPago.titular = formData.get('titular-transferencia');
+                    datosPago.dni = formData.get('dni-transferencia');
+                } else if (metodoPago === 'efectivo') {
+                    datosPago.monto = formData.get('monto-efectivo');
+                }
+
+                var orden = {
+                    numero: generarNumeroOrden(),
+                    fecha: new Date().toISOString(),
+                    productos: carrito.map(function(p) {
+                        return { id: p.id, nombre: p.nombre, precio: p.precio, cantidad: p.cantidad || 1 };
+                    }),
+                    envio: {
+                        tipo: formData.get('envio'),
+                        nombre: formData.get('nombre'),
+                        direccion: formData.get('direccion'),
+                        ciudad: formData.get('ciudad'),
+                        provincia: formData.get('provincia'),
+                        codigo_postal: formData.get('codigo-postal'),
+                        telefono: formData.get('telefono'),
+                        costo: tot.envio
+                    },
+                    pago: datosPago,
+                    subtotal: tot.subtotal,
+                    total: tot.total
+                };
+
+                sessionStorage.setItem('orden', JSON.stringify(orden));
+
+                insertarOrdenEnSupabase(orden).catch(function() {});
+
+                localStorage.removeItem('carrito');
+
+                window.location.href = 'orden-confirmada.html';
+            });
+        });
+    </script>
+<script src="js/carrito-nav.js"></script>
+</body>
+</html>

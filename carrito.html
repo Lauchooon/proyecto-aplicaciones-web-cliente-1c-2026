@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Carrito de Compras</title>
+    <meta name="description" content="Carrito de compras de TechStore">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/carrito.css">
+</head>
+<body>
+    <header>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Carrito de Compras</h2>
+
+        <div class="pasos-checkout">
+            <span class="paso activo">Carrito</span>
+            <span class="paso-separador"></span>
+            <a href="checkout.html" class="paso">Pago y Envío</a>
+            <span class="paso-separador"></span>
+            <span class="paso">Confirmación</span>
+        </div>
+
+        <section id="carrito-productos">
+            <h3>Productos en tu carrito</h3>
+            <table class="tabla-carrito">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th class="col-precio">Precio Unitario</th>
+                        <th class="col-cantidad">Cantidad</th>
+                        <th class="col-subtotal">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <div class="resumen-carrito">
+            <div class="fila-total">
+                <span>Subtotal</span>
+                <strong>$345.000</strong>
+            </div>
+            <div class="fila-total">
+                <span>Envío</span>
+                <strong>$3.000</strong>
+            </div>
+            <div class="fila-total total-final">
+                <span>Total</span>
+                <strong>$348.000</strong>
+            </div>
+            <button class="btn-vaciar-carrito">Vaciar carrito</button>
+            <a href="checkout.html" class="btn-checkout">Continuar con el pago</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function formatearPrecio(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function obtenerCarrito() {
+            try {
+                var data = localStorage.getItem('carrito');
+                return data ? JSON.parse(data) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function renderizarCarrito() {
+            var carrito = obtenerCarrito();
+            var tbody = document.querySelector('.tabla-carrito tbody');
+            var subtotales = document.querySelectorAll('.resumen-carrito .fila-total strong');
+
+            tbody.innerHTML = '';
+
+            carrito.forEach(function(producto, index) {
+                var cantidad = producto.cantidad || 1;
+                var subtotalItem = producto.precio * cantidad;
+
+                var tr = document.createElement('tr');
+
+                var tdProducto = document.createElement('td');
+                tdProducto.appendChild(document.createTextNode(producto.nombre));
+                tdProducto.appendChild(document.createElement('br'));
+                var btnEliminar = document.createElement('button');
+                btnEliminar.className = 'btn-eliminar';
+                btnEliminar.textContent = 'Eliminar';
+                btnEliminar.addEventListener('click', function() {
+                    carrito.splice(index, 1);
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderizarCarrito();
+                });
+                tdProducto.appendChild(btnEliminar);
+                tr.appendChild(tdProducto);
+
+                var tdPrecio = document.createElement('td');
+                tdPrecio.className = 'col-precio';
+                tdPrecio.textContent = '$' + formatearPrecio(producto.precio);
+                tr.appendChild(tdPrecio);
+
+                var tdCantidad = document.createElement('td');
+                tdCantidad.className = 'col-cantidad';
+
+                var controlDiv = document.createElement('div');
+                controlDiv.className = 'cantidad-control';
+
+                var btnMenos = document.createElement('button');
+                btnMenos.className = 'cantidad-btn cantidad-menos';
+                btnMenos.textContent = '\u2212';
+                btnMenos.addEventListener('click', function() {
+                    var val = (producto.cantidad || 1) - 1;
+                    if (val < 1) val = 1;
+                    producto.cantidad = val;
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderizarCarrito();
+                });
+                controlDiv.appendChild(btnMenos);
+
+                var inputCant = document.createElement('input');
+                inputCant.type = 'number';
+                inputCant.className = 'cantidad-input';
+                inputCant.value = cantidad;
+                inputCant.min = 1;
+                inputCant.addEventListener('change', function() {
+                    var val = parseInt(this.value);
+                    if (val < 1) val = 1;
+                    producto.cantidad = val;
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderizarCarrito();
+                });
+                controlDiv.appendChild(inputCant);
+
+                var btnMas = document.createElement('button');
+                btnMas.className = 'cantidad-btn cantidad-mas';
+                btnMas.textContent = '+';
+                btnMas.addEventListener('click', function() {
+                    producto.cantidad = (producto.cantidad || 1) + 1;
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                    renderizarCarrito();
+                });
+                controlDiv.appendChild(btnMas);
+
+                tdCantidad.appendChild(controlDiv);
+                tr.appendChild(tdCantidad);
+
+                var tdSubtotal = document.createElement('td');
+                tdSubtotal.className = 'col-subtotal';
+                tdSubtotal.textContent = '$' + formatearPrecio(subtotalItem);
+                tr.appendChild(tdSubtotal);
+
+                tbody.appendChild(tr);
+            });
+
+            var subtotal = carrito.reduce(function(acc, p) { return acc + p.precio * (p.cantidad || 1); }, 0);
+            var envio = 3000;
+            var total = subtotal + envio;
+
+            subtotales[0].textContent = '$' + formatearPrecio(subtotal);
+            subtotales[1].textContent = '$' + formatearPrecio(envio);
+            subtotales[2].textContent = '$' + formatearPrecio(total);
+
+            if (typeof actualizarCarritoNav === 'function') actualizarCarritoNav();
+        }
+
+        function vaciarCarrito() {
+            localStorage.removeItem('carrito');
+            renderizarCarrito();
+        }
+
+        document.querySelector('.btn-vaciar-carrito').addEventListener('click', vaciarCarrito);
+
+        renderizarCarrito();
+    </script>
+<script src="js/carrito-nav.js"></script>
+</body>
+</html>

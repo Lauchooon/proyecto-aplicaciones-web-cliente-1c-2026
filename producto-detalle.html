@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Detalle del Producto</title>
+    <meta name="description" content="Información detallada del producto">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/formularios.css">
+    <link rel="stylesheet" href="css/producto-detalle.css">
+</head>
+<body>
+    <header>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="producto-detalle">
+            <div class="producto-detalle-imagen">
+                <img id="detalle-imagen" src="" alt="">
+            </div>
+            <div class="producto-detalle-info">
+                <h2 id="detalle-nombre"></h2>
+                <p class="producto-detalle-precio" id="detalle-precio"></p>
+                <p class="producto-detalle-descripcion" id="detalle-descripcion"></p>
+                <p class="producto-detalle-sku" id="detalle-sku"></p>
+                <div class="producto-detalle-envio">
+                    <h4>Opciones de Envío</h4>
+                    <ul>
+                        <li>Envío estándar (5-7 días hábiles) - $2.500</li>
+                        <li>Envío express (1-2 días hábiles) - $7.000</li>
+                        <li>Retiro en tienda sin costo</li>
+                    </ul>
+                </div>
+                <button class="btn-carrito" id="btn-agregar-carrito-detalle">Agregar al carrito</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/productos.js"></script>
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var id = parseInt(params.get('id'));
+
+        obtenerProductoPorId(id).then(function(producto) {
+            if (producto) {
+                document.getElementById('detalle-imagen').src = producto.imagen;
+                document.getElementById('detalle-imagen').alt = producto.nombre;
+                document.getElementById('detalle-nombre').textContent = producto.nombre;
+
+                var precioEl = document.getElementById('detalle-precio');
+                if (producto.oferta) {
+                    precioEl.innerHTML = '$' + formatearPrecio(producto.precio) + ' <span class="producto-detalle-precio-anterior">$' + formatearPrecio(producto.precioAnterior) + '</span>';
+                } else {
+                    precioEl.textContent = '$' + formatearPrecio(producto.precio);
+                }
+
+                document.getElementById('detalle-descripcion').textContent = producto.descripcion;
+                document.getElementById('detalle-sku').textContent = 'SKU: ' + producto.categoria.toUpperCase() + '-' + String(producto.id).padStart(3, '0');
+
+                document.getElementById('btn-agregar-carrito-detalle').addEventListener('click', function() {
+                    guardarEnCarrito(producto);
+                });
+            } else {
+                document.querySelector('.producto-detalle').innerHTML = '<p style="text-align:center;font-size:1.2rem">Producto no encontrado.</p>';
+            }
+        }).catch(function(err) {
+            console.error('Error al cargar producto:', err);
+            document.querySelector('.producto-detalle').innerHTML = '<p style="text-align:center;font-size:1.2rem">Error al cargar el producto.</p>';
+        });
+    </script>
+<script src="js/carrito-nav.js"></script>
+</body>
+</html>

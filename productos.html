@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Productos</title>
+    <meta name="description" content="Catálogo completo de productos de informática y gaming">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/tarjetas.css">
+</head>
+<body>
+    <header>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Catálogo de Productos</h2>
+
+        <span id="filtro-todos" class="filtro-ancla"></span>
+        <nav class="filtros-categoria" id="filtros-categoria">
+            <a href="#filtro-todos" class="filtro-link activo">Todos</a>
+        </nav>
+
+        <div class="filtros-secundarios">
+            <div class="filtro-precio-rango">
+                <label>Precio: $<span id="rango-label-min">0</span> — $<span id="rango-label-max">1.450.000</span></label>
+                <div class="rango-slider">
+                    <div class="rango-track" id="rango-track"></div>
+                    <input type="range" id="rango-min" min="0" max="1450000" value="0" step="1000">
+                    <input type="range" id="rango-max" min="0" max="1450000" value="1450000" step="1000">
+                </div>
+            </div>
+            <div class="filtro-orden">
+                <label for="sort-select">Ordenar:</label>
+                <select id="sort-select">
+                    <option value="default">Por defecto</option>
+                    <option value="nombre-asc">Alfabéticamente A-Z</option>
+                    <option value="nombre-desc">Alfabéticamente Z-A</option>
+                    <option value="precio-asc">Precio: menor a mayor</option>
+                    <option value="precio-desc">Precio: mayor a menor</option>
+                    <option value="fecha-desc">Más nuevos</option>
+                    <option value="ventas-desc">Más vendidos</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="titulos-categoria"></div>
+
+        <div class="productos"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/productos.js"></script>
+<script src="js/carrito-nav.js"></script>
+</body>
+</html>

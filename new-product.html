@@ -3,94 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Producto - AutoRepuestos</title>
-    <link rel="stylesheet" href="/style/style.css">
-    <script src="/js/config.js" defer></script>
-    <script src="/js/script.js" defer></script>
+    <title>Alta de Producto - TechStore</title>
+    <meta name="description" content="Agregar nuevo producto a nuestro catálogo de informática">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navegacion.css">
+    <link rel="stylesheet" href="css/formularios.css">
 </head>
 <body>
-    <header class="ml-header">
-        <div class="ml-header-top">
-            <a href="/" class="ml-logo">
-                <span class="ml-logo-icon">🏠</span>
-                <div class="ml-logo-text">
-                    <span class="ml-logo-title">Repuestos</span>
-                    <span class="ml-logo-subtitle">Pepito</span>
-                </div>
-            </a>
-
-            <div class="ml-search">
-                <form action="/search" method="get" class="ml-search-form">
-                    <input type="text" placeholder="Buscar productos, marcas, categorías..." class="ml-search-input">
-                    <button type="submit" class="ml-search-btn">
-                        <span>🔍</span>
-                    </button>
+    <header>
+<h1><a href="index.html">TechStore</a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="hamburger">☰</label>
+    <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="new-product.html">Alta Producto</a></li>
+                <li class="nav-carrito"><a href="carrito.html">Carrito<span class="carrito-badge" id="carrito-badge">0</span></a><div class="carrito-preview" id="carrito-preview"></div></li>
+                <li><a href="login-user.html">Iniciar Sesión</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="checkbox" id="buscador-toggle">
+                <label for="buscador-toggle" class="buscador-lupa">🔍</label>
+                <form class="buscador-input">
+                    <input type="text" name="busqueda" placeholder="Buscar productos...">
                 </form>
             </div>
-
-            <div class="ml-header-actions">
-                <nav class="ml-nav">
-                    <ul class="ml-nav-list">
-                        <li><a href="/" class="ml-nav-link">Inicio</a></li>
-                        <li><a href="/about.html" class="ml-nav-link">Nosotros</a></li>
-                        <li><a href="/contact.html" class="ml-nav-link">Contacto</a></li>
-                        <li><a href="/new-product.html" class="ml-nav-link">Admin</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-        <div class="ml-categories-bar">
-            <ul class="ml-categories-list">
-                <li><a href="#">Motor</a></li>
-                <li><a href="#">Frenos</a></li>
-                <li><a href="#">Suspensión</a></li>
-                <li><a href="#">Eléctrico</a></li>
-                <li><a href="#">Carrocería</a></li>
-                <li><a href="#">Accesorios</a></li>
-
-            </ul>
-        </div>
+        </nav>
     </header>
 
-    <main class="admin-main">
-        <section id="new-product">
-            <h2 class="form-title">Nuevo Producto</h2>
-            <form id="product-form" class="admin-form">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
+    <main>
+        <section>
+            <h2>Alta de Producto</h2>
+            <p>Completa el formulario para agregar un nuevo producto al catálogo</p>
 
-                <div class="form-group">
-                    <label for="precio">Precio</label>
-                    <input type="number" id="precio" name="precio" step="0.01" required>
-                </div>
+            <div id="mensaje-resultado" class="mensaje" style="display:none"></div>
 
-                <div class="form-group">
-                    <label for="imageurl">URL de Imagen</label>
-                    <input type="url" id="imageurl" name="imageurl" required>
-                </div>
+            <form id="form-producto">
+                <fieldset>
+                    <legend>Información del Producto</legend>
 
-                <div class="form-group">
-                    <label for="location">Ubicación</label>
-                    <input type="text" id="location" name="location" required>
-                </div>
+                    <label for="nombre">Nombre del producto:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ej: Procesador Intel Core i7">
 
-                <div class="form-group">
-                    <label for="quotes">Cuotas / Descripción</label>
-                    <input type="text" id="quotes" name="quotes" required>
-                </div>
+                    <label for="precio">Precio ($):</label>
+                    <input type="number" id="precio" name="precio" step="0.01" min="0" required placeholder="Ej: 25.99">
 
-                <button type="submit" class="form-submit">Guardar Producto</button>
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Seleccionar categoría</option>
+                    </select>
+
+                    <label for="imagen">URL de la imagen:</label>
+                    <input type="url" id="imagen" name="imagen" placeholder="Ej: https://ejemplo.com/imagen.jpg">
+
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="3" placeholder="Breve descripción del producto"></textarea>
+
+                    <label>
+                        <input type="checkbox" id="oferta" name="oferta">
+                        Producto en oferta
+                    </label>
+
+                    <div id="grupo-precio-anterior" style="display:none">
+                        <label for="precio_anterior">Precio anterior ($):</label>
+                        <input type="number" id="precio_anterior" name="precio_anterior" step="0.01" min="0" placeholder="Ej: 35.99">
+                    </div>
+                </fieldset>
+
+                <div class="botones">
+                    <button type="submit">Guardar Producto</button>
+                    <button type="reset">Limpiar Formulario</button>
+                    <a href="index.html">Cancelar</a>
+                </div>
             </form>
-
-            <div id="form-message" class="form-message"></div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/new-product.js"></script>
+<script src="js/carrito-nav.js"></script>
 </body>
 </html>
