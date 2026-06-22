@@ -75,6 +75,25 @@ footer {
     text-align: center;
 }
 
+/* Mensajes de formulario */
+.mensaje {
+    display: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: var(--borde-fino) solid var(--color-texto);
+    font-weight: bold;
+}
+
+.mensaje--exito {
+    border-color: #2e7d32;
+    color: #2e7d32;
+}
+
+.mensaje--error {
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+}
+
 /* Tablet */
 @media (min-width: 768px) {
     header {

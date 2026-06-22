@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta de Producto - TechStore</title>
     <meta name="description" content="Agregar nuevo producto a nuestro catálogo de informática">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navegacion.css">
     <link rel="stylesheet" href="css/formularios.css">
 </head>
@@ -36,42 +36,45 @@
         <section>
             <h2>Alta de Producto</h2>
             <p>Completa el formulario para agregar un nuevo producto al catálogo</p>
-            
-<form action="#" method="post" enctype="multipart/form-data">
+
+            <div id="mensaje-resultado" class="mensaje" style="display:none"></div>
+
+            <form id="form-producto">
                 <fieldset>
                     <legend>Información del Producto</legend>
-                    
+
                     <label for="nombre">Nombre del producto:</label>
                     <input type="text" id="nombre" name="nombre" required placeholder="Ej: Procesador Intel Core i7">
-                    
+
                     <label for="precio">Precio ($):</label>
                     <input type="number" id="precio" name="precio" step="0.01" min="0" required placeholder="Ej: 25.99">
-                    
-                    <label for="sku">SKU:</label>
-                    <input type="text" id="sku" name="sku" required placeholder="Ej: FLT-ACE-001">
-                    
+
                     <label for="categoria">Categoría:</label>
                     <select id="categoria" name="categoria" required>
                         <option value="">Seleccionar categoría</option>
-                        <option value="procesadores">Procesadores</option>
-                        <option value="ram">Memorias RAM</option>
-                        <option value="ssd">Discos SSD</option>
-                        <option value="gpu">Placas de Video</option>
-                        <option value="motherboard">Motherboards</option>
-                        <option value="coolers">Coolers</option>
-                        <option value="gabinetes">Gabinetes</option>
-                        <option value="fuentes">Fuentes</option>
-                        <option value="monitores">Monitores</option>
                     </select>
-                    
-                    <label for="imagen">Foto del producto:</label>
-                    <input type="file" id="imagen" name="imagen" accept="image/*">
+
+                    <label for="imagen">URL de la imagen:</label>
+                    <input type="url" id="imagen" name="imagen" placeholder="Ej: https://ejemplo.com/imagen.jpg">
+
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="3" placeholder="Breve descripción del producto"></textarea>
+
+                    <label>
+                        <input type="checkbox" id="oferta" name="oferta">
+                        Producto en oferta
+                    </label>
+
+                    <div id="grupo-precio-anterior" style="display:none">
+                        <label for="precio_anterior">Precio anterior ($):</label>
+                        <input type="number" id="precio_anterior" name="precio_anterior" step="0.01" min="0" placeholder="Ej: 35.99">
+                    </div>
                 </fieldset>
 
                 <div class="botones">
                     <button type="submit">Guardar Producto</button>
                     <button type="reset">Limpiar Formulario</button>
-                    <a href="/index.html">Cancelar</a>
+                    <a href="index.html">Cancelar</a>
                 </div>
             </form>
         </section>
@@ -81,26 +84,7 @@
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            var nombre = document.getElementById('nombre').value;
-            var precio = document.getElementById('precio').value;
-            var sku = document.getElementById('sku').value;
-            var categoria = document.getElementById('categoria').value;
-
-            var producto = {
-                nombre: nombre,
-                precio: precio,
-                sku: sku,
-                categoria: categoria
-            };
-
-            console.log(producto);
-
-            // TODO: aquí irá la llamada .insert() de Supabase
-        });
-    </script>
+    <script src="js/supabase.js"></script>
+    <script src="js/new-product.js"></script>
 </body>
 </html>

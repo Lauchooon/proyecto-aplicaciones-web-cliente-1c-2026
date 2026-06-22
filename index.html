@@ -189,9 +189,11 @@
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="js/supabase.js"></script>
     <script src="js/productos.js"></script>
     <script>
-        var ofertas = catalogoProductos.filter(function(p) { return p.oferta; });
+        document.addEventListener('catalogo:listo', function() {
+            var ofertas = catalogoProductos.filter(function(p) { return p.oferta; });
         var contenedor = document.getElementById('ofertas-destacadas');
 
         ofertas.forEach(function(p) {
@@ -238,6 +240,7 @@
             enlace.appendChild(divDesc);
 
             contenedor.appendChild(enlace);
+        });
         });
     </script>
 </body>

@@ -48,24 +48,20 @@
         <div class="confirmacion">
             <div class="confirmacion-icono">&#10003;</div>
             <h3>¡Gracias por tu compra!</h3>
-            <p class="confirmacion-numero">Pedido <strong>#TS-2026-004217</strong></p>
+            <p class="confirmacion-numero" id="conf-numero">Pedido <strong>#TS-2026-000000</strong></p>
             <p>Te enviaremos un correo electrónico con los detalles de tu pedido y el número de seguimiento una vez que el paquete sea despachado.</p>
         </div>
 
-        <div class="confirmacion-detalle">
+        <div class="confirmacion-detalle" id="conf-detalle">
             <div class="confirmacion-columna">
                 <h4>Dirección de envío</h4>
-                <p>Lautaro Gómez<br>
-                Av. Corrientes 1234<br>
-                CABA, Buenos Aires<br>
-                CP 1043<br>
-                Tel: 11 5555-1234</p>
+                <p id="conf-direccion"></p>
 
                 <h4>Método de envío</h4>
-                <p>Envío estándar (5-7 días hábiles) - $3.000</p>
+                <p id="conf-envio"></p>
 
                 <h4>Método de pago</h4>
-                <p>Tarjeta de crédito/débito terminada en 3456</p>
+                <p id="conf-pago"></p>
             </div>
 
             <div class="confirmacion-columna">
@@ -78,37 +74,21 @@
                             <th class="col-subtotal">Subtotal</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>AMD Ryzen 7 5800X</td>
-                            <td class="col-cantidad">1</td>
-                            <td class="col-subtotal">$180.000</td>
-                        </tr>
-                        <tr>
-                            <td>Corsair Vengeance 16GB DDR4</td>
-                            <td class="col-cantidad">2</td>
-                            <td class="col-subtotal">$90.000</td>
-                        </tr>
-                        <tr>
-                            <td>Samsung 1TB 980 Pro</td>
-                            <td class="col-cantidad">1</td>
-                            <td class="col-subtotal">$75.000</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="conf-productos"></tbody>
                 </table>
 
                 <div class="resumen-totales confirmacion-totales">
                     <div class="fila-total">
                         <span>Subtotal</span>
-                        <strong>$345.000</strong>
+                        <strong id="conf-subtotal">$0</strong>
                     </div>
                     <div class="fila-total">
                         <span>Envío</span>
-                        <strong>$3.000</strong>
+                        <strong id="conf-envio-costo">$0</strong>
                     </div>
                     <div class="fila-total total-final">
                         <span>Total</span>
-                        <strong>$348.000</strong>
+                        <strong id="conf-total">$0</strong>
                     </div>
                 </div>
             </div>
@@ -122,5 +102,57 @@
     <footer>
         <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function formatearPrecio(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function nombreEnvio(tipo) {
+            var nombres = { estandar: 'Envío estándar (5-7 días hábiles)', expres: 'Envío exprés (2-3 días hábiles)', retiro: 'Retiro en tienda' };
+            return nombres[tipo] || tipo;
+        }
+
+        function nombrePago(metodo) {
+            var nombres = { tarjeta: 'Tarjeta de crédito/débito', transferencia: 'Transferencia bancaria', efectivo: 'Efectivo (contra entrega)' };
+            return nombres[metodo] || metodo;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var ordenData = sessionStorage.getItem('orden');
+            if (!ordenData) {
+                document.getElementById('conf-detalle').innerHTML = '<p style="text-align:center;padding:2rem">No se encontraron datos de la orden.</p>';
+                return;
+            }
+
+            var orden = JSON.parse(ordenData);
+
+            document.getElementById('conf-numero').innerHTML = 'Pedido <strong>#' + orden.numero + '</strong>';
+
+            var dirHtml = orden.envio.nombre + '<br>' +
+                orden.envio.direccion + '<br>' +
+                orden.envio.ciudad + ', ' + orden.envio.provincia + '<br>' +
+                'CP ' + orden.envio.codigo_postal + '<br>' +
+                'Tel: ' + orden.envio.telefono;
+            document.getElementById('conf-direccion').innerHTML = dirHtml;
+
+            document.getElementById('conf-envio').textContent = nombreEnvio(orden.envio.tipo) + ' - $' + formatearPrecio(orden.envio.costo);
+
+            document.getElementById('conf-pago').textContent = nombrePago(orden.pago.metodo);
+
+            var tbody = document.getElementById('conf-productos');
+            orden.productos.forEach(function(p) {
+                var tr = document.createElement('tr');
+                tr.innerHTML = '<td>' + p.nombre + '</td>' +
+                    '<td class="col-cantidad">1</td>' +
+                    '<td class="col-subtotal">$' + formatearPrecio(p.precio) + '</td>';
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('conf-subtotal').textContent = '$' + formatearPrecio(orden.subtotal);
+            document.getElementById('conf-envio-costo').textContent = '$' + formatearPrecio(orden.envio.costo);
+            document.getElementById('conf-total').textContent = '$' + formatearPrecio(orden.total);
+        });
+    </script>
 </body>
 </html>

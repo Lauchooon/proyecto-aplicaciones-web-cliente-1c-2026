@@ -1,0 +1,25 @@
+id,nombre,precio,categoria,imagen,descripcion,oferta,precioAnterior
+1,AMD Ryzen 9 7950X,650000,procesadores,img/amd.jpg,"16 núcleos, 32 hilos, 5.7GHz - Socket AM5",false,
+2,Intel Core i9-14900K,680000,procesadores,img/intel.jpg,"24 núcleos, 32 hilos, 6.0GHz - Socket LGA1700",false,
+3,AMD Ryzen 7 5800X3D,320000,procesadores,img/amd.jpg,"8 núcleos, 16 hilos, 4.7GHz - Socket AM4",false,
+4,Intel Core i5-13600K,285000,procesadores,img/intel.jpg,"14 núcleos, 20 hilos, 5.1GHz - Socket LGA1700",false,
+5,AMD Ryzen 9 5900X,259990,procesadores,img/amd.jpg,"12 núcleos 24 hilos - Socket AM4",true,320000
+6,Corsair Vengeance 32GB DDR5,145000,memorias,img/ram.jpg,"5600MHz, kit 2x16GB, CL36",false,
+7,G.Skill Trident Z5 16GB DDR5,95000,memorias,img/ram.jpg,"6400MHz, RGB, kit 2x8GB, CL32",false,
+8,Kingston Fury Beast 32GB DDR4,78000,memorias,img/ram.jpg,"3200MHz, kit 2x16GB, CL16",false,
+9,Samsung 990 Pro 2TB NVMe,195000,discos,img/ssd-01.jpg,"PCIe 4.0, lectura 7450MB/s, escritura 6900MB/s",false,
+10,WD Black SN850X 1TB NVMe,105000,discos,img/ssd-02.jpg,"PCIe 4.0, lectura 7300MB/s, escritura 6300MB/s",false,
+11,Crucial P3 Plus 1TB NVMe,65000,discos,img/ssd-03.jpg,"PCIe 4.0, lectura 5000MB/s, escritura 4200MB/s",false,
+12,Kingston A400 480GB SATA,28000,discos,img/ssd-04.jpg,"SATA 3, lectura 500MB/s, formato 2.5""",false,
+13,NVIDIA RTX 4090,1450000,placas-video,img/gpu-01.jpg,"24GB GDDR6X, 16384 CUDA cores, Ada Lovelace",false,
+14,NVIDIA RTX 4070 Ti Super,580000,placas-video,img/gpu-02.jpg,"16GB GDDR6X, 8448 CUDA cores",false,
+15,AMD Radeon RX 7900 XTX,620000,placas-video,img/gpu-03.jpg,"24GB GDDR6, 6144 Stream Processors, RDNA 3",false,
+16,NVIDIA RTX 3060 Ti,295000,placas-video,img/gpu-04.jpg,"8GB GDDR6, 4864 CUDA cores, Ampere",false,
+17,NVIDIA RTX 4070,379990,placas-video,img/gpu-05.jpg,"12GB GDDR6X, ideal para gaming 1440p",true,450000
+18,ASUS ROG Crosshair X670E Hero,485000,motherboards,img/mb-01.jpg,"Socket AM5, DDR5, PCIe 5.0, WiFi 6E",false,
+19,MSI MEG Z790 ACE,420000,motherboards,img/mb-02.jpg,"Socket LGA1700, DDR5, PCIe 5.0, WiFi 6E",false,
+20,Gigabyte B650 AORUS Elite AX,185000,motherboards,img/mb-03.jpg,"Socket AM5, DDR5, PCIe 4.0, WiFi 6",false,
+21,"LG UltraGear 27"" 4K 144Hz",420000,monitores,img/monitor-01.jpg,"IPS, HDMI 2.1, FreeSync Premium Pro, HDR400",false,
+22,"Samsung Odyssey G7 32""",485000,monitores,img/monitor-02.jpg,"VA, 240Hz, 1000R Curvo, G-Sync Compatible",false,
+23,ASUS ROG Swift 360Hz,650000,monitores,img/monitor-03.jpg,"IPS, 360Hz, HDR, G-Sync Ultimate",false,
+24,"Monitor 27"" 144Hz",149990,monitores,img/monitor-04.jpg,"IPS Full HD, FreeSync, tiempo de respuesta 1ms",true,185000
